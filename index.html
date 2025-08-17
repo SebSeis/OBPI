@@ -307,7 +307,6 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
             <li><a href="#objectproperties">Object Properties</a></li>
             <li><a href="#datatypeproperties">Datatype Properties</a></li>
             <li><a href="#annotationproperties">Annotation Properties</a></li>
-            <li><a href="#namedindividuals">Named Individuals</a></li>
             <li><a href="#namespaces">Namespaces</a></li>
             <li><a href="#legend">Legend</a></li>
         </ol>
@@ -345,14 +344,10 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
             can be specialized per trade by following the modular pattern already used in OCQA, allowing the description
             of trade-specific inspection types without changing the core. Second, jurisdictional variation can be
             modeled by refining regulatory scopes and requirement sets for states, provinces, or cities, while keeping a
-            common backbone for cross-regional comparison. OBPI represents requirements and regulations so that assigned
-            and actual characteristic values can be compared, and it supports rule-based reasoning (e.g., with SHACL or
-            query rules) to semi-automate inspection scheduling and compliance checks. This modular and extensible
-            design enables application across diverse permitting contexts, facilitates integration with existing data
-            sources, and supports incremental evolution as practices and regulations change.</p>
+            common backbone for cross-regional comparison.</p>
         <div class="figure">
             <img src="https://SebSeis.github.io/OBPI/Pictures/OBPI-Overview.png" alt="Italian Trulli"
-                style=" height: 550px;">
+                style=" height: 450px;">
             <div class="caption"><strong>Figure 1:</strong>Overall architecture of OCQA</div>
         </div>
         <section id="process">
@@ -384,8 +379,8 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
 
             <div class="figure">
                 <img src="https://SebSeis.github.io/OBPI/Pictures/AuthorityProcess.png" alt="Italian Trulli"
-                    style=" height: 550px;">
-                <div class="caption"><strong>Figure 1:</strong>Overall architecture of OCQA</div>
+                    style=" height: 240px;">
+                <div class="caption"><strong>Figure 1:</strong>Representation of process-oriented planning and execution of inspections by a building authority</div>
             </div>
         </section>
                 <section id="charges">
@@ -393,8 +388,8 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
             <p>The OBPI ontology models inspection fees by linking project parameters (e.g., building category, unit of measure) to rate catalogs and supporting project-related, fixed, or mixed charges. Costing parameters are represented as <code>obpi:ChargesFeature</code> within a <code>obpi:ChargesCatalog</code>, both derived from the OCQA-Catalog module (<code>ocqa:Feature</code>, <code>ocqa:Catalog</code>), and are connected to inspection or building types via <code>obpi:hasChargeFeature</code>. The calculated amount is attached to the inspection instance through <code>obpi:InspectionCharge</code>. Follow-up costs are captured by <code>obpi:Reinspection</code> linked to the prior inspection via <code>obpi:hasReinspection</code>, while missed mandatory inspections are recorded as <code>obpi:MissedInspection</code> to document late or absent requests and to assess an “Investigation and Administration” fee.</p>
             <div class="figure">
                 <img src="https://SebSeis.github.io/OBPI/Pictures/Charges.png" alt="Italian Trulli"
-                    style=" height: 550px;">
-                <div class="caption"><strong>Figure 1:</strong>Overall architecture of OCQA</div>
+                    style=" height: 150px;">
+                <div class="caption"><strong>Figure 3:</strong>Representation of charges and charging rates in the OBPI</div>
             </div>
         </section>
         <section id="classes">
@@ -3040,7 +3035,7 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
         </section>
 
 
-        <section id="namedindividuals">
+        <!-- <section id="namedindividuals">
             <h2>Named Individuals <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
             <ul class="hlist">
                 <li><a href="#0iHArp6M56$hfIhU3oftny">0iHArp6M56$hfIhU3oftny</a></li>
@@ -3551,7 +3546,7 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
                     </dd>
                 </table>
             </div>
-        </section>
+        </section> -->
 
         <section id="namespaces">
             <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
