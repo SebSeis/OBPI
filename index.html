@@ -1,0 +1,3655 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Ontology for Building Permit Inspection Planning (OBPI)</title>
+    <link rel="icon" type="image/png" sizes="32x32"
+        href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC40lEQVRYhe2UT0hUQRzHp6Iss1B3VZKIDbbdfW9mnoi4f3zzjkJQeOgS0SEIb1EWBGGlLLu460zQPQM1unUIIjA6rfpm6ZAhHjoIRVQUFUlEbG+euTsdXG1d3VL3bVD4g+9h+L35fT/8fvN7ADgY9aHY5fpIvK82HO9ysu66wxWOzbkjcekKx0a2ALYA/n2AGi3a6ArFezcidziecQygNhhrcUficjP6PwBqtGijKxy/thnVBePHywYoDsFhl53GV8SEcsTx4usCMLUewTVpc23BNvEzm6Neyf1+KcG2vwqwUjgrOJq2JmHftwmkVBRGTvncFodnbI7vChO/FRznCmHsNM7aHM9Yk7Df5iqsLMw9sMNOK2g+jS4IEz0UJv4iuJZb2RltWnB4UZqH6ioGAgAAGe5vtiZhtzDx7OoRadLmeM7m6IRjhnLMW2Vx1bA5GhAmnhIcz6/xNj4Ujsky8UspwfayjDPjsF2Y6L7N8Vzx/BfP+KPg6LbgSqd8DnfJW2CnbaLhfH5ephpqygJYvQU4Z3P82TLRsDDhUTnmrSq+Y3N0Mg+Xldy/zwEAnLMWZ3pHpNExmfLs/t0dOdVcbT0JeKxUwFP2VljjqiE47Jp53LTXNxhsUZjerTByXWX6VZWRs/4bIQ2ACv+UAomgDzLCISNZxAxZKMhIDjLy1JfsaK+I+eGBUBNk5E2x8RogX/PdcDZUqieWTSh5D6nOVKqfhoycUmlHFFIyu5RXqf7AcQDISCpv/tqbMBqK883RtmpISRoxQyJKPgGn3wNk5NEigDFa6hslqV/Kj+FdBQD0bshIDlKSLlVcoWQo36UhR80BAMB73lulMn0EMpJTqD6qJiOt3mho/8GbkT2BZNgDB/V+RI0fkOrT3kRIVQbaDizJm2hdNbINBxwk5xAj3yEjuV9rZ1iIkgxixkLBA83mz8uCjLwoGwAx0vOnFSy5mtR4VTaAQvVORMnwZgSpzkrV/QmdE2tKe46+MQAAAABJRU5ErkJggg==">
+    <link rel="icon" type="image/png" sizes="16x16"
+        href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABhklEQVQ4jbWPzStEURjG3yQLirlGKUnKFO45Z+SjmXvnnmthQcpCoVhYmD/AwmJiI3OvZuZc2U3UlKU0/gAslMw9JgvhHxAr2fko7r0jHSsl+TgbTz2Lt5731/MASEiJW9ONml2QyX6rsGalmnT74v8BDf12hxJfpV8d1uwNKUBYszabdFv84L8B9X0rESVmmUup2fme0cVhJWaZHw4NWL1Sew
+EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ9Hn31OgoATL+CkLDGB5H1OKj4nFd/FBxUXJ0UZNb4edw/6nLyJXaj5FeCVyPLNIVmYK8TG1IwWb16L1gEACAFV90ftoT8bdOX0EeyY99gxBXZMgRz6qGb1KantAACI0UvE6F5XJqEjpsdURouI0Vt5gGOUkUNnPu7ObGIIMfNaGqDmjDRi9FZldF1lRgYzeqUyeoiY4ag5Iy3RgOYRM8+/M2bG8efsO4hGrpmJseyMAAAAAElFTkSuQmCC">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <style>
+        #pylode {
+            position: fixed;
+            top: 130px;
+            left: -60px;
+            font-size: small;
+            transform: rotate(-90deg);
+            color: grey;
+        }
+
+        #pylode a {
+            font-size: 2em;
+            font-weight: bold;
+            text-decoration: none;
+            color: #005A9C;
+        }
+
+        #pylode a:hover {
+            color: #333;
+        }
+
+        .cardinality {
+            font-style: italic;
+            color: #aa00aa;
+        }
+
+        dt {
+            font-weight: bold;
+            padding: 5px 0 5px 0;
+        }
+
+        ul.hlist {
+            list-style-type: none;
+            border: 1px solid navy;
+            padding: 5px;
+            background-color: #F4FFFF;
+        }
+
+        ul.hierarchy {
+            border: 1px solid navy;
+            padding: 5px 25px 5px 25px;
+            background-color: #F4FFFF;
+        }
+
+
+        ul.hlist li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        .entity {
+            border: 1px solid navy;
+            margin: 5px 0 5px 0;
+            padding: 5px;
+        }
+
+        .entity th {
+            width: 150px;
+            vertical-align: top;
+        }
+
+        .entity th,
+        .entity td {
+            padding-bottom: 20px;
+        }
+
+        .entity table th {
+            text-align: left;
+        }
+
+        section#overview img {
+            max-width: 1000px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            text-align: left
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #005A9C;
+            background: white
+        }
+
+        h1 {
+            font: 170% sans-serif;
+            line-height: 110%;
+        }
+
+        h2 {
+            font: 140% sans-serif;
+            margin-top: 40px;
+        }
+
+        h3 {
+            font: 120% sans-serif;
+            margin-top: 3px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid navy;
+        }
+
+        h4 {
+            font: bold 100% sans-serif
+        }
+
+        h5 {
+            font: italic 100% sans-serif
+        }
+
+        h6 {
+            font: small-caps 100% sans-serif
+        }
+
+
+        body {
+            padding: 2em 70px 2em 70px;
+            margin: 0;
+            font-family: sans-serif;
+            color: black;
+            background: white;
+            background-position: top left;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            text-align: justify;
+        }
+
+        section {
+            max-width: 1500px;
+        }
+
+        .figure {
+            margin-bottom: 20px;
+        }
+
+        :link {
+            color: #00C;
+            background: transparent
+        }
+
+        :visited {
+            color: #609;
+            background: transparent
+        }
+
+        a:active {
+            color: #C00;
+            background: transparent
+        }
+
+        .sup-c,
+        .sup-op,
+        .sup-fp,
+        .sup-dp,
+        .sup-ap,
+        .sup-p,
+        .sup-ni,
+        .sup-con,
+        .sup-col {
+            cursor: help;
+            margin-left: 3px;
+        }
+
+        .sup-c {
+            color: orange;
+        }
+
+        .sup-op {
+            color: navy;
+        }
+
+        .sup-fp {
+            color: lightskyblue;
+        }
+
+        .sup-dp {
+            color: green;
+        }
+
+        .sup-ap {
+            color: darkred;
+        }
+
+        .sup-p {
+            color: black;
+        }
+
+        .sup-ni {
+            color: brown;
+        }
+
+        .sup-con {
+            color: orange;
+        }
+
+        .sup-col {
+            color: darkred;
+        }
+
+        code {
+            font-size: large;
+            color: darkred;
+        }
+
+        /* less prominent links for properties */
+        .proplink {
+            color: #336;
+            text-decoration: none;
+        }
+    </style>
+
+    <script type="application/ld+json">
+      [
+  {
+    "@id": "https://w3id.org/obpi#",
+    "@type": [
+      "https://schema.org/DefinedTermSet"
+    ],
+    "https://schema.org/description": [
+      {
+        "@value": "<p>OBPI is a formal, modular OWL ontology capturing the domain of inspection planning\n         for building‐permit authorities</p>"
+      }
+    ],
+    "https://schema.org/license": [
+      {
+        "@id": "http://creativecommons.org/licenses/by/4.0/"
+      }
+    ],
+    "https://schema.org/name": [
+      {
+        "@value": "Ontology for Building Permit Inspection Planning (OBPI)"
+      }
+    ]
+  }
+]
+    </script>
+</head>
+
+<body>
+    <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
+            <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
+        <span style="font-size:smaller;">2.13.2</span>
+    </div>
+    <h1>Ontology for Building Permit Inspection Planning (OBPI)</h1>
+    <section id="metadata">
+        <h2 style="display:none;">Metadata</h2>
+        <dl>
+            <dt>URI</dt>
+            <dd><code>https://w3id.org/obpi#</code></dd>
+            <dt><a class="proplink"
+                    href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/creator">Creator</a>(s)
+            </dt>
+            <dd>
+                Sebastian Seiß<br />
+                Yuan Zheng<br />
+            </dd>
+            <dt><a class="proplink"
+                    href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/created">Created</a>
+            </dt>
+            <dd>2025-06-22</dd>
+            <dt>Version Information</dt>
+            <dd>1.0</dd>
+            <dt>Imports</dt>
+            <dd>
+                <a
+                    href="https://w3id.org/digitalconstruction/0.5/Processes">https://w3id.org/digitalconstruction/0.5/Processes</a><br />
+                <a
+                    href="https://w3id.org/digitalconstruction/0.5/Variables">https://w3id.org/digitalconstruction/0.5/Variables</a><br />
+                <a href="https://w3id.org/obpa/0.3">https://w3id.org/obpa/0.3</a><br />
+                <a href="https://w3id.org/ocqa/0.1">https://w3id.org/ocqa/0.1</a><br />
+            </dd>
+            <dt>License</dt>
+            <dd><a href="http://creativecommons.org/licenses/by/4.0/">http://creativecommons.org/licenses/by/4.0/</a>
+            </dd>
+            <dt>Ontology RDF</dt>
+            <dd><a href="https://w3id.org/obpi/obpi.ttl">RDF (turtle)</a></dd>
+            <h2>Description</h2>
+            <div id="description">
+                <p>OBPI is a formal, modular OWL ontology capturing the domain of inspection planning
+                    for building‐permit authorities</p>
+            </div>
+    </section>
+    <section id="toc">
+        <h2>Table of Contents</h2>
+        <ol>
+            <li><a href="#overview">Overview of OBPI</a></li>
+            <li><a href="#process">Authority process representation</a></li>
+            <li><a href="#classes">Classes</a></li>
+            <li><a href="#objectproperties">Object Properties</a></li>
+            <li><a href="#datatypeproperties">Datatype Properties</a></li>
+            <li><a href="#annotationproperties">Annotation Properties</a></li>
+            <li><a href="#namedindividuals">Named Individuals</a></li>
+            <li><a href="#namespaces">Namespaces</a></li>
+            <li><a href="#legend">Legend</a></li>
+        </ol>
+    </section>
+    <section id="overview">
+        <h2>Overview of OBPI</h2>
+        <p>
+        <p>This document provides a description of the Ontology for Building Permit Inspections (OBPI), which is
+            designed to represent explicit knowledge about permit-relevant site inspections in the context of building
+            authorities. The ontology provides a standardized vocabulary for describing concepts, entities, and
+            relationships that are central to permitting inspections, including inspection kinds, requests, schedules,
+            jurisdictions, regulations, organizational roles, and links to construction processes. It is based on axioms
+            that define the properties and relations of these concepts. This document includes an overview of the
+            ontology structure, the types of entities and relations represented, and the intended applications for
+            building-permit inspection management. It also explains how to use and extend the ontology and outlines the
+            processes adopted for development and maintenance. The development of OBPI follows the Linked Open Terms
+            (LOT) methodology and is encoded in the Web Ontology Language (OWL) to ensure machine-readability and
+            alignment with related ontologies. In line with LOT, we provide an Ontology Requirements Specification
+            Document (ORSD) in the specification section. OBPI is evaluated through automatic consistency checking,
+            competency questions, criteria-based assessment, and expert feedback sessions.</p>
+        <p>OBPI is organized into modules that capture the required data for permit inspections while reusing
+            established domain ontologies (see Figures in the documentation). In particular, OBPI reuses DiCon to
+            represent construction execution knowledge such as activities, resources, agents, and process links,
+            enabling semantic integration with schedules and building models through existing alignments (e.g., ifcOWL,
+            BOT). OBPI builds on OCQA to represent generic inspection knowledge (e.g., inspection objectives, measured
+            and assigned characteristics, equipment, and costs) and specializes it for permitting needs. OBPI also
+            aligns with OBPA to represent authority-specific concepts such as applicants, case files, and administrative
+            procedures. This reuse is realized via owl:imports and targeted alignments so that the imported ontologies
+            remain intact while OBPI contributes permit-specific specializations. Core OBPI content covers inspection
+            planning artifacts (e.g., building-level inspection plans and daily inspection plans), request handling for
+            inspections, time-window constraints, and organizational structures for in-house and third-party inspectors.
+            Together, these modules and reuses provide a cohesive foundation for linking permit inspections with
+            construction workflows and administrative processes.</p>
+        <p>To keep the ontology lean and adaptable, OBPI supports extension along two axes. First, inspection content
+            can be specialized per trade by following the modular pattern already used in OCQA, allowing the description
+            of trade-specific inspection types without changing the core. Second, jurisdictional variation can be
+            modeled by refining regulatory scopes and requirement sets for states, provinces, or cities, while keeping a
+            common backbone for cross-regional comparison. OBPI represents requirements and regulations so that assigned
+            and actual characteristic values can be compared, and it supports rule-based reasoning (e.g., with SHACL or
+            query rules) to semi-automate inspection scheduling and compliance checks. This modular and extensible
+            design enables application across diverse permitting contexts, facilitates integration with existing data
+            sources, and supports incremental evolution as practices and regulations change.</p>
+        <div class="figure">
+            <img src="https://SebSeis.github.io/OBPI/Pictures/OBPI-Overview.png" alt="Italian Trulli"
+                style=" height: 550px;">
+            <div class="caption"><strong>Figure 1:</strong>Overall architecture of OCQA</div>
+        </div>
+        <section id="process">
+            <h2>Authority process representation</h2>
+            <p>The OBPI ontology represents the process-oriented perspective of building-permit inspections by
+                formalizing the sequential workflow followed by building authorities during construction oversight.
+                Building authorities operate under binding administrative procedures, which prescribe each procedural
+                step, assign responsibility to designated officials, and reference the statutory provisions that must be
+                fulfilled. To capture this formally, OBPI encodes the general sequence of inspection-related activities,
+                beginning with the notification of an approved permit and extending through intermediate and final
+                inspections, including the issuance of compliance and completion certificates. Each step is semantically
+                represented as a distinct activity class within the ontology, ensuring that the procedural logic of
+                building-permit inspections is explicitly defined and machine-readable. The activities are connected
+                through the relation <code>ocqa:precedes</code>, which preserves their sequential order, while the
+                relation <code>obpi:hasPreCondition</code> enforces that a predecessor activity must carry the status
+                “passed” before the successor may begin. This guarantees that inspections and certifications unfold in
+                the correct legal and procedural order. </p>
+            <p>Certificates play a central role within this process, as they serve as formal outcomes of inspection
+                activities. In OBPI, all certificate-related activities, such as the issuance of compliance or
+                completion certificates, are explicitly linked to certificate instances via the relation
+                <code>obpi:hasCertificate</code>. These instances are organized in a unified class hierarchy under
+                <code>obpi:Certificate</code>, which enables consistent representation, management, and querying of all
+                permit-related certificates. By integrating both the procedural flow of inspections and the
+                formalization of certificates, OBPI provides a comprehensive framework that not only mirrors the
+                administrative logic of building authorities but also enables automated reasoning about inspection
+                requirements, outcomes, and compliance. This process-oriented core thus ensures that permit inspections
+                can be systematically represented, compared across jurisdictions, and adapted to the specific statutory
+                conditions under which they are conducted. </p>
+
+            <div class="figure">
+                <img src="https://SebSeis.github.io/OBPI/Pictures/AuthorityProcess.png" alt="Italian Trulli"
+                    style=" height: 550px;">
+                <div class="caption"><strong>Figure 1:</strong>Overall architecture of OCQA</div>
+            </div>
+        </section>
+                <section id="charges">
+            <h2>Representation of inspection charges</h2>
+            <p>The OBPI ontology models inspection fees by linking project parameters (e.g., building category, unit of measure) to rate catalogs and supporting project-related, fixed, or mixed charges. Costing parameters are represented as <code>obpi:ChargesFeature</code> within a <code>obpi:ChargesCatalog</code>, both derived from the OCQA-Catalog module (<code>ocqa:Feature</code>, <code>ocqa:Catalog</code>), and are connected to inspection or building types via <code>obpi:hasChargeFeature</code>. The calculated amount is attached to the inspection instance through <code>obpi:InspectionCharge</code>. Follow-up costs are captured by <code>obpi:Reinspection</code> linked to the prior inspection via <code>obpi:hasReinspection</code>, while missed mandatory inspections are recorded as <code>obpi:MissedInspection</code> to document late or absent requests and to assess an “Investigation and Administration” fee.</p>
+            <div class="figure">
+                <img src="https://SebSeis.github.io/OBPI/Pictures/Charges.png" alt="Italian Trulli"
+                    style=" height: 550px;">
+                <div class="caption"><strong>Figure 1:</strong>Overall architecture of OCQA</div>
+            </div>
+        </section>
+        <section id="classes">
+            <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+            <ul class="hlist">
+                <li><a href="https://schema.org/Organization">sdo:Organization</a></li>
+                <li><a
+                        href="https://w3id.org/digitalconstruction/0.5/Agents#Person">https://w3id.org/digitalconstruction/0.5/Agents#Person</a>
+                </li>
+                <li><a
+                        href="https://w3id.org/digitalconstruction/0.5/Entities#Role">https://w3id.org/digitalconstruction/0.5/Entities#Role</a>
+                </li>
+                <li><a
+                        href="https://w3id.org/digitalconstruction/0.5/Processes#Activity">https://w3id.org/digitalconstruction/0.5/Processes#Activity</a>
+                </li>
+                <li><a href="https://w3id.org/obpa#Building">https://w3id.org/obpa#Building</a></li>
+                <li><a href="https://w3id.org/obpa#BuildingApplication">https://w3id.org/obpa#BuildingApplication</a>
+                </li>
+                <li><a href="https://w3id.org/obpa#Department">https://w3id.org/obpa#Department</a></li>
+                <li><a href="https://w3id.org/obpa#Expertise">https://w3id.org/obpa#Expertise</a></li>
+                <li><a href="https://w3id.org/obpa#InspectionDepartment">https://w3id.org/obpa#InspectionDepartment</a>
+                </li>
+                <li><a href="https://w3id.org/obpa#Role">https://w3id.org/obpa#Role</a></li>
+                <li><a href="https://w3id.org/obpa#Sector">https://w3id.org/obpa#Sector</a></li>
+                <li><a href="#ActivityConstraint">ActivityConstraint</a></li>
+                <li><a href="#AdministrativeActivity">AdministrativeActivity</a></li>
+                <li><a href="#Applicant">Applicant</a></li>
+                <li><a href="#AuthorityCertificates">AuthorityCertificates</a></li>
+                <li><a href="#BuildingInspectionPlan">BuildingInspectionPlan</a></li>
+                <li><a href="#BuildingPermitInspection">BuildingPermitInspection</a></li>
+                <li><a href="#ChargesCatalog">ChargesCatalog</a></li>
+                <li><a href="#ChargesFeature">ChargesFeature</a></li>
+                <li><a href="#City">City</a></li>
+                <li><a href="#ColumnPlacementInspection">ColumnPlacementInspection</a></li>
+                <li><a href="#CommunicationNonCompliance">CommunicationNonCompliance</a></li>
+                <li><a href="#CompletionCertifcate">CompletionCertifcate</a></li>
+                <li><a href="#ComplexBuilding">ComplexBuilding</a></li>
+                <li><a href="#ComplianceCertificate">ComplianceCertificate</a></li>
+                <li><a href="#Constraint">Constraint</a></li>
+                <li><a href="#DailyInspectionPlan">DailyInspectionPlan</a></li>
+                <li><a href="#ExecutingFinalInspection">ExecutingFinalInspection</a></li>
+                <li><a href="#ExecutingIntermediateInspection">ExecutingIntermediateInspection</a></li>
+                <li><a href="#FailedInspection">FailedInspection</a></li>
+                <li><a href="#FinalBuildingPermitInspection">FinalBuildingPermitInspection</a></li>
+                <li><a href="#FootingElevation">FootingElevation</a></li>
+                <li><a href="#Foundation">Foundation</a></li>
+                <li><a href="#FoundationInspection">FoundationInspection</a></li>
+                <li><a href="#FoundationPlacementInspection">FoundationPlacementInspection</a></li>
+                <li><a href="#FramingInspection">FramingInspection</a></li>
+                <li><a href="#FrostFreeInspection">FrostFreeInspection</a></li>
+                <li><a href="#InspectionPlanning">InspectionPlanning</a></li>
+                <li><a href="#IntermediateBuildingPermitInspection">IntermediateBuildingPermitInspection</a></li>
+                <li><a href="#IssuingCompletionCertificate">IssuingCompletionCertificate</a></li>
+                <li><a href="#IssuingComplianceCertificate">IssuingComplianceCertificate</a></li>
+                <li><a href="#IssuingNotificationLetter">IssuingNotificationLetter</a></li>
+                <li><a href="#Juristication">Juristication</a></li>
+                <li><a href="#MandatoryInspection">MandatoryInspection</a></li>
+                <li><a href="#MissedInspection">MissedInspection</a></li>
+                <li><a href="#NotifcationLetter">NotifcationLetter</a></li>
+                <li><a href="#OptionaInspection">OptionaInspection</a></li>
+                <li><a href="#PerimeterInsulationInspection">PerimeterInsulationInspection</a></li>
+                <li><a href="#PermitRelatedInspectionQualification">PermitRelatedInspectionQualification</a></li>
+                <li><a href="#Province">Province</a></li>
+                <li><a href="#ReInspection">ReInspection</a></li>
+                <li><a href="#Request">Request</a></li>
+                <li><a href="#Requirement">Requirement</a></li>
+                <li><a href="#SiteInspectionPlan">SiteInspectionPlan</a></li>
+                <li><a href="#State">State</a></li>
+                <li><a href="#StructuralFraming">StructuralFraming</a></li>
+                <li><a href="#ThirdParty_InspectionAgency">ThirdParty_InspectionAgency</a></li>
+                <li><a
+                        href="https://w3id.org/ocqa#ActualCharacteristicValue">https://w3id.org/ocqa#ActualCharacteristicValue</a>
+                </li>
+                <li><a
+                        href="https://w3id.org/ocqa#AssignedCharacteristicValue">https://w3id.org/ocqa#AssignedCharacteristicValue</a>
+                </li>
+                <li><a href="https://w3id.org/ocqa#Characteristic">https://w3id.org/ocqa#Characteristic</a></li>
+                <li><a href="https://w3id.org/ocqa#Inspection">https://w3id.org/ocqa#Inspection</a></li>
+                <li><a href="https://w3id.org/ocqa#InspectionPlan">https://w3id.org/ocqa#InspectionPlan</a></li>
+                <li><a href="https://w3id.org/ocqa#Inspector">https://w3id.org/ocqa#Inspector</a></li>
+                <li><a href="https://w3id.org/ocqa#Qualification">https://w3id.org/ocqa#Qualification</a></li>
+                <li><a href="https://w3id.org/ocqa/catalog#Feature">https://w3id.org/ocqa/catalog#Feature</a></li>
+                <li><a
+                        href="https://w3id.org/ocqa/catalog#SubFeatureCatalog">https://w3id.org/ocqa/catalog#SubFeatureCatalog</a>
+                </li>
+            </ul>
+            <div class="entity class" id="Organization">
+                <h3>
+                    Organization<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Organization"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://schema.org/Organization</code></td>
+                    </tr>
+                    <tr>
+                        <th>Sub-classes</th>
+                        <td>
+                            <a href="#ThirdParty_InspectionAgency">ThirdParty_InspectionAgency</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="Person">
+                <h3>
+                    Person<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Person"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/digitalconstruction/0.5/Agents#Person</code></td>
+                    </tr>
+                    <tr>
+                        <th>Sub-classes</th>
+                        <td>
+                            <a href="#Applicant">Applicant</a><sup class="sup-c" title="class">c</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="Role">
+                <h3>
+                    Role<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Role"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/digitalconstruction/0.5/Entities#Role</code></td>
+                    </tr>
+                    <tr>
+                        <th>Members</th>
+                        <td>
+                            <a href="https://w3id.org/obpi#Inspector">Inspector</a><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="Activity">
+                <h3>
+                    Activity<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Activity"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/digitalconstruction/0.5/Processes#Activity</code></td>
+                    </tr>
+                    <tr>
+                        <th>Sub-classes</th>
+                        <td>
+                            <a href="#StructuralFraming">StructuralFraming</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                            <a href="#Request">Request</a><sup class="sup-c" title="class">c</sup><br />
+                            <a href="#AdministrativeActivity">AdministrativeActivity</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>In domain of</th>
+                        <td>
+                            <a href="#hasPreCondition">hasPreCondition</a><sup class="sup-op"
+                                title="object property">op</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="Building">
+                <h3>
+                    Building<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Building"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpa#Building</code></td>
+                    </tr>
+                    <tr>
+                        <th>Sub-classes</th>
+                        <td>
+                            <a href="#ComplexBuilding">ComplexBuilding</a><sup class="sup-c" title="class">c</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="BuildingApplication">
+                <h3>
+                    BuildingApplication<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#BuildingApplication"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpa#BuildingApplication</code></td>
+                    </tr>
+                    <tr>
+                        <th>In range of</th>
+                        <td>
+                            <a href="#submit">submit</a><sup class="sup-op" title="object property">op</sup><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Members</th>
+                        <td>
+                            <a href="https://w3id.org/obpi#BA_7589">BA_7589</a><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="Department">
+                <h3>
+                    Department<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Department"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpa#Department</code></td>
+                    </tr>
+                    <tr>
+                        <th>Sub-classes</th>
+                        <td>
+                            <a
+                                href="https://w3id.org/obpa#InspectionDepartment">https://w3id.org/obpa#InspectionDepartment</a><sup
+                                class="sup-c" title="class">c</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="Expertise">
+                <h3>
+                    Expertise<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Expertise"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpa#Expertise</code></td>
+                    </tr>
+                    <tr>
+                        <th>Sub-classes</th>
+                        <td>
+                            <a href="#PermitRelatedInspectionQualification">PermitRelatedInspectionQualification</a><sup
+                                class="sup-c" title="class">c</sup><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Members</th>
+                        <td>
+                            <a href="https://w3id.org/obpi#ComplexBuildingExpertise">ComplexBuildingExpertise</a><br />
+                            <a
+                                href="https://w3id.org/obpi#BuildingStructuralExpertise">BuildingStructuralExpertise</a><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="InspectionDepartment">
+                <h3>
+                    InspectionDepartment<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#InspectionDepartment"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpa#InspectionDepartment</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a href="https://w3id.org/obpa#Department">https://w3id.org/obpa#Department</a><sup
+                                class="sup-c" title="class">c</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="Role1">
+                <h3>
+                    Role<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Role1"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpa#Role</code></td>
+                    </tr>
+                    <tr>
+                        <th>Members</th>
+                        <td>
+                            <a href="https://w3id.org/obpi#ChiefBuildingOfficial">ChiefBuildingOfficial</a><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="Sector">
+                <h3>
+                    Sector<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Sector"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpa#Sector</code></td>
+                    </tr>
+                    <tr>
+                        <th>Members</th>
+                        <td>
+                            <a href="https://w3id.org/obpi#Sector05">Sector05</a><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="ActivityConstraint">
+                <h3>
+                    ActivityConstraint<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#ActivityConstraint"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#ActivityConstraint</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a href="#Constraint">Constraint</a><sup class="sup-c" title="class">c</sup><br />
+                            <a
+                                href="https://w3id.org/digitalconstruction/0.5/Variables#Constraint">https://w3id.org/digitalconstruction/0.5/Variables#Constraint</a><sup
+                                class="sup-c" title="class">c</sup><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>In range of</th>
+                        <td>
+                            <a href="#hasPreCondition">hasPreCondition</a><sup class="sup-op"
+                                title="object property">op</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="AdministrativeActivity">
+                <h3>
+                    AdministrativeActivity<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#AdministrativeActivity"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#AdministrativeActivity</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a
+                                href="https://w3id.org/digitalconstruction/0.5/Processes#Activity">https://w3id.org/digitalconstruction/0.5/Processes#Activity</a><sup
+                                class="sup-c" title="class">c</sup><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Sub-classes</th>
+                        <td>
+                            <a href="#IssuingNotificationLetter">IssuingNotificationLetter</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                            <a href="#CommunicationNonCompliance">CommunicationNonCompliance</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                            <a href="#ExecutingFinalInspection">ExecutingFinalInspection</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                            <a href="#IssuingCompletionCertificate">IssuingCompletionCertificate</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                            <a href="#ExecutingIntermediateInspection">ExecutingIntermediateInspection</a><sup
+                                class="sup-c" title="class">c</sup><br />
+                            <a href="#IssuingComplianceCertificate">IssuingComplianceCertificate</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                            <a href="#InspectionPlanning">InspectionPlanning</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="Applicant">
+                <h3>
+                    Applicant<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Applicant"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#Applicant</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a
+                                href="https://w3id.org/digitalconstruction/0.5/Agents#Person">https://w3id.org/digitalconstruction/0.5/Agents#Person</a><sup
+                                class="sup-c" title="class">c</sup><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>In domain of</th>
+                        <td>
+                            <a href="#requests">requests</a><sup class="sup-op" title="object property">op</sup><br />
+                            <a href="#submit">submit</a><sup class="sup-op" title="object property">op</sup><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Members</th>
+                        <td>
+                            <a href="https://w3id.org/obpi#Miller">Miller</a><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="AuthorityCertificates">
+                <h3>
+                    AuthorityCertificates<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#AuthorityCertificates"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#AuthorityCertificates</code></td>
+                    </tr>
+                    <tr>
+                        <th>Sub-classes</th>
+                        <td>
+                            <a href="#CompletionCertifcate">CompletionCertifcate</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                            <a href="#ComplianceCertificate">ComplianceCertificate</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                            <a href="#NotifcationLetter">NotifcationLetter</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>In range of</th>
+                        <td>
+                            <a href="#issues">issues</a><sup class="sup-op" title="object property">op</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="BuildingInspectionPlan">
+                <h3>
+                    BuildingInspectionPlan<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#BuildingInspectionPlan"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#BuildingInspectionPlan</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a href="https://w3id.org/ocqa#InspectionPlan">https://w3id.org/ocqa#InspectionPlan</a><sup
+                                class="sup-c" title="class">c</sup><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Members</th>
+                        <td>
+                            <a href="https://w3id.org/obpi#BuildingInspectionPlan64">BuildingInspectionPlan64</a><br />
+                            <a href="https://w3id.org/obpi#BuildingInspectionPlan51">BuildingInspectionPlan51</a><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="BuildingPermitInspection">
+                <h3>
+                    BuildingPermitInspection<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#BuildingPermitInspection"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#BuildingPermitInspection</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a href="https://w3id.org/ocqa#Inspection">https://w3id.org/ocqa#Inspection</a><sup
+                                class="sup-c" title="class">c</sup><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Sub-classes</th>
+                        <td>
+                            <a href="#IntermediateBuildingPermitInspection">IntermediateBuildingPermitInspection</a><sup
+                                class="sup-c" title="class">c</sup><br />
+                            <a href="#FailedInspection">FailedInspection</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                            <a href="#ReInspection">ReInspection</a><sup class="sup-c" title="class">c</sup><br />
+                            <a href="#MandatoryInspection">MandatoryInspection</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                            <a href="#FinalBuildingPermitInspection">FinalBuildingPermitInspection</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                            <a href="#FoundationPlacementInspection">FoundationPlacementInspection</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                            <a href="#FoundationInspection">FoundationInspection</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                            <a href="#FootingElevation">FootingElevation</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                            <a href="#FramingInspection">FramingInspection</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                            <a href="#OptionaInspection">OptionaInspection</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                            <a href="#PerimeterInsulationInspection">PerimeterInsulationInspection</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                            <a href="#MissedInspection">MissedInspection</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                            <a href="#ColumnPlacementInspection">ColumnPlacementInspection</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                            <a href="#FrostFreeInspection">FrostFreeInspection</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>In domain of</th>
+                        <td>
+                            <a href="#hasReInspection">hasReInspection</a><sup class="sup-op"
+                                title="object property">op</sup><br />
+                            <a href="#hasChargesFeature">hasChargesFeature</a><sup class="sup-op"
+                                title="object property">op</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="ChargesCatalog">
+                <h3>
+                    ChargesCatalog<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#ChargesCatalog"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#ChargesCatalog</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a
+                                href="https://w3id.org/ocqa/catalog#SubFeatureCatalog">https://w3id.org/ocqa/catalog#SubFeatureCatalog</a><sup
+                                class="sup-c" title="class">c</sup><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>In domain of</th>
+                        <td>
+                            <a href="#containsCharges">containsCharges</a><sup class="sup-op"
+                                title="object property">op</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="ChargesFeature">
+                <h3>
+                    ChargesFeature<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#ChargesFeature"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#ChargesFeature</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a
+                                href="https://w3id.org/ocqa/catalog#Feature">https://w3id.org/ocqa/catalog#Feature</a><sup
+                                class="sup-c" title="class">c</sup><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>In range of</th>
+                        <td>
+                            <a href="#containsCharges">containsCharges</a><sup class="sup-op"
+                                title="object property">op</sup><br />
+                            <a href="#hasChargesFeature">hasChargesFeature</a><sup class="sup-op"
+                                title="object property">op</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="City">
+                <h3>
+                    City<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#City"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#City</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a href="#Juristication">Juristication</a><sup class="sup-c" title="class">c</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="ColumnPlacementInspection">
+                <h3>
+                    ColumnPlacementInspection<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a
+                            href="#ColumnPlacementInspection" title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#ColumnPlacementInspection</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a href="#BuildingPermitInspection">BuildingPermitInspection</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Members</th>
+                        <td>
+                            <a href="https://w3id.org/obpi#Inspection187">Inspection187</a><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="CommunicationNonCompliance">
+                <h3>
+                    CommunicationNonCompliance<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a
+                            href="#CommunicationNonCompliance" title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#CommunicationNonCompliance</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a href="#AdministrativeActivity">AdministrativeActivity</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="CompletionCertifcate">
+                <h3>
+                    CompletionCertifcate<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#CompletionCertifcate"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#CompletionCertifcate</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a href="#AuthorityCertificates">AuthorityCertificates</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="ComplexBuilding">
+                <h3>
+                    ComplexBuilding<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#ComplexBuilding"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#ComplexBuilding</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a href="https://w3id.org/obpa#Building">https://w3id.org/obpa#Building</a><sup
+                                class="sup-c" title="class">c</sup><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Members</th>
+                        <td>
+                            <a href="https://w3id.org/obpi#UniversityBuilding05">UniversityBuilding05</a><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="ComplianceCertificate">
+                <h3>
+                    ComplianceCertificate<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#ComplianceCertificate"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#ComplianceCertificate</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a href="#AuthorityCertificates">AuthorityCertificates</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="Constraint">
+                <h3>
+                    Constraint<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Constraint"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#Constraint</code></td>
+                    </tr>
+                    <tr>
+                        <th>Sub-classes</th>
+                        <td>
+                            <a href="#ActivityConstraint">ActivityConstraint</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="DailyInspectionPlan">
+                <h3>
+                    DailyInspectionPlan<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#DailyInspectionPlan"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#DailyInspectionPlan</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a href="https://w3id.org/ocqa#InspectionPlan">https://w3id.org/ocqa#InspectionPlan</a><sup
+                                class="sup-c" title="class">c</sup><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Members</th>
+                        <td>
+                            <a href="https://w3id.org/obpi#Inspector1_Day180">Inspector1_Day180</a><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="ExecutingFinalInspection">
+                <h3>
+                    ExecutingFinalInspection<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#ExecutingFinalInspection"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#ExecutingFinalInspection</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a href="#AdministrativeActivity">AdministrativeActivity</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>In domain of</th>
+                        <td>
+                            <a href="#triggers">triggers</a><sup class="sup-op" title="object property">op</sup><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>In range of</th>
+                        <td>
+                            <a href="#accompanying">accompanying</a><sup class="sup-op"
+                                title="object property">op</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="ExecutingIntermediateInspection">
+                <h3>
+                    ExecutingIntermediateInspection<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a
+                            href="#ExecutingIntermediateInspection" title="fragment link to here">#</a> <a
+                            href="#classes" title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#ExecutingIntermediateInspection</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a href="#AdministrativeActivity">AdministrativeActivity</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>In domain of</th>
+                        <td>
+                            <a href="#triggers">triggers</a><sup class="sup-op" title="object property">op</sup><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>In range of</th>
+                        <td>
+                            <a href="#accompanying">accompanying</a><sup class="sup-op"
+                                title="object property">op</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="FailedInspection">
+                <h3>
+                    FailedInspection<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#FailedInspection"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#FailedInspection</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a href="#BuildingPermitInspection">BuildingPermitInspection</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="FinalBuildingPermitInspection">
+                <h3>
+                    FinalBuildingPermitInspection<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a
+                            href="#FinalBuildingPermitInspection" title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#FinalBuildingPermitInspection</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a href="#BuildingPermitInspection">BuildingPermitInspection</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>In range of</th>
+                        <td>
+                            <a href="#triggers">triggers</a><sup class="sup-op" title="object property">op</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="FootingElevation">
+                <h3>
+                    FootingElevation<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#FootingElevation"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#FootingElevation</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a href="#BuildingPermitInspection">BuildingPermitInspection</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Members</th>
+                        <td>
+                            <a href="https://w3id.org/obpi#Inspection189">Inspection189</a><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="Foundation">
+                <h3>
+                    Foundation<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Foundation"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#Foundation</code></td>
+                    </tr>
+                    <tr>
+                        <th>Members</th>
+                        <td>
+                            <a href="https://w3id.org/obpi#0iHArp6M56$hfIhU3oftny">0iHArp6M56$hfIhU3oftny</a><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="FoundationInspection">
+                <h3>
+                    FoundationInspection<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#FoundationInspection"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#FoundationInspection</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a href="#BuildingPermitInspection">BuildingPermitInspection</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Members</th>
+                        <td>
+                            <a href="https://w3id.org/obpi#Inspection587">Inspection587</a><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="FoundationPlacementInspection">
+                <h3>
+                    FoundationPlacementInspection<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a
+                            href="#FoundationPlacementInspection" title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#FoundationPlacementInspection</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a href="#BuildingPermitInspection">BuildingPermitInspection</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Members</th>
+                        <td>
+                            <a href="https://w3id.org/obpi#Inspection190">Inspection190</a><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="FramingInspection">
+                <h3>
+                    FramingInspection<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#FramingInspection"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#FramingInspection</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a href="#BuildingPermitInspection">BuildingPermitInspection</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Members</th>
+                        <td>
+                            <a href="https://w3id.org/obpi#Inspection588">Inspection588</a><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="FrostFreeInspection">
+                <h3>
+                    FrostFreeInspection<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#FrostFreeInspection"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#FrostFreeInspection</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a href="#BuildingPermitInspection">BuildingPermitInspection</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Members</th>
+                        <td>
+                            <a href="https://w3id.org/obpi#Inspection189">Inspection189</a><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="InspectionPlanning">
+                <h3>
+                    InspectionPlanning<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#InspectionPlanning"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#InspectionPlanning</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a href="#AdministrativeActivity">AdministrativeActivity</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>In domain of</th>
+                        <td>
+                            <a href="#accompanying">accompanying</a><sup class="sup-op"
+                                title="object property">op</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="IntermediateBuildingPermitInspection">
+                <h3>
+                    IntermediateBuildingPermitInspection<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a
+                            href="#IntermediateBuildingPermitInspection" title="fragment link to here">#</a> <a
+                            href="#classes" title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#IntermediateBuildingPermitInspection</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a href="#BuildingPermitInspection">BuildingPermitInspection</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>In range of</th>
+                        <td>
+                            <a href="#triggers">triggers</a><sup class="sup-op" title="object property">op</sup><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Members</th>
+                        <td>
+                            <a href="https://w3id.org/obpi#Inspection588">Inspection588</a><br />
+                            <a href="https://w3id.org/obpi#Inspection587">Inspection587</a><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="IssuingCompletionCertificate">
+                <h3>
+                    IssuingCompletionCertificate<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a
+                            href="#IssuingCompletionCertificate" title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#IssuingCompletionCertificate</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a href="#AdministrativeActivity">AdministrativeActivity</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>In domain of</th>
+                        <td>
+                            <a href="#issues">issues</a><sup class="sup-op" title="object property">op</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="IssuingComplianceCertificate">
+                <h3>
+                    IssuingComplianceCertificate<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a
+                            href="#IssuingComplianceCertificate" title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#IssuingComplianceCertificate</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a href="#AdministrativeActivity">AdministrativeActivity</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>In domain of</th>
+                        <td>
+                            <a href="#issues">issues</a><sup class="sup-op" title="object property">op</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="IssuingNotificationLetter">
+                <h3>
+                    IssuingNotificationLetter<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a
+                            href="#IssuingNotificationLetter" title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#IssuingNotificationLetter</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a href="#AdministrativeActivity">AdministrativeActivity</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>In domain of</th>
+                        <td>
+                            <a href="#issues">issues</a><sup class="sup-op" title="object property">op</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="Juristication">
+                <h3>
+                    Juristication<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Juristication"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#Juristication</code></td>
+                    </tr>
+                    <tr>
+                        <th>Sub-classes</th>
+                        <td>
+                            <a href="#State">State</a><sup class="sup-c" title="class">c</sup><br />
+                            <a href="#City">City</a><sup class="sup-c" title="class">c</sup><br />
+                            <a href="#Province">Province</a><sup class="sup-c" title="class">c</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="MandatoryInspection">
+                <h3>
+                    MandatoryInspection<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#MandatoryInspection"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#MandatoryInspection</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a href="#BuildingPermitInspection">BuildingPermitInspection</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Members</th>
+                        <td>
+                            <a href="https://w3id.org/obpi#Inspection588">Inspection588</a><br />
+                            <a href="https://w3id.org/obpi#Inspection587">Inspection587</a><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="MissedInspection">
+                <h3>
+                    MissedInspection<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#MissedInspection"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#MissedInspection</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a href="#BuildingPermitInspection">BuildingPermitInspection</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="NotifcationLetter">
+                <h3>
+                    NotifcationLetter<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#NotifcationLetter"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#NotifcationLetter</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a href="#AuthorityCertificates">AuthorityCertificates</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="OptionaInspection">
+                <h3>
+                    OptionaInspection<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#OptionaInspection"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#OptionaInspection</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a href="#BuildingPermitInspection">BuildingPermitInspection</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="PerimeterInsulationInspection">
+                <h3>
+                    PerimeterInsulationInspection<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a
+                            href="#PerimeterInsulationInspection" title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#PerimeterInsulationInspection</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a href="#BuildingPermitInspection">BuildingPermitInspection</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Members</th>
+                        <td>
+                            <a href="https://w3id.org/obpi#Inspection188">Inspection188</a><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="PermitRelatedInspectionQualification">
+                <h3>
+                    PermitRelatedInspectionQualification<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a
+                            href="#PermitRelatedInspectionQualification" title="fragment link to here">#</a> <a
+                            href="#classes" title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#PermitRelatedInspectionQualification</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a href="https://w3id.org/ocqa#Qualification">https://w3id.org/ocqa#Qualification</a><sup
+                                class="sup-c" title="class">c</sup><br />
+                            <a href="https://w3id.org/obpa#Expertise">https://w3id.org/obpa#Expertise</a><sup
+                                class="sup-c" title="class">c</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="Province">
+                <h3>
+                    Province<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Province"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#Province</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a href="#Juristication">Juristication</a><sup class="sup-c" title="class">c</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="ReInspection">
+                <h3>
+                    ReInspection<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#ReInspection"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#ReInspection</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a href="#BuildingPermitInspection">BuildingPermitInspection</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>In range of</th>
+                        <td>
+                            <a href="#hasReInspection">hasReInspection</a><sup class="sup-op"
+                                title="object property">op</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="Request">
+                <h3>
+                    Request<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Request"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#Request</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a
+                                href="https://w3id.org/digitalconstruction/0.5/Processes#Activity">https://w3id.org/digitalconstruction/0.5/Processes#Activity</a><sup
+                                class="sup-c" title="class">c</sup><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>In domain of</th>
+                        <td>
+                            <a href="#requestsInspection">requestsInspection</a><sup class="sup-op"
+                                title="object property">op</sup><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>In range of</th>
+                        <td>
+                            <a href="#requests">requests</a><sup class="sup-op" title="object property">op</sup><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Members</th>
+                        <td>
+                            <a href="https://w3id.org/obpi#Ins_Req_Framing51">Ins_Req_Framing51</a><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="Requirement">
+                <h3>
+                    Requirement<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Requirement"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#Requirement</code></td>
+                    </tr>
+                    <tr>
+                        <th>Members</th>
+                        <td>
+                            <a href="https://w3id.org/obpi#AssignedDampProof">AssignedDampProof</a><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="SiteInspectionPlan">
+                <h3>
+                    SiteInspectionPlan<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#SiteInspectionPlan"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#SiteInspectionPlan</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a href="https://w3id.org/ocqa#InspectionPlan">https://w3id.org/ocqa#InspectionPlan</a><sup
+                                class="sup-c" title="class">c</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="State">
+                <h3>
+                    State<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#State"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#State</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a href="#Juristication">Juristication</a><sup class="sup-c" title="class">c</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="StructuralFraming">
+                <h3>
+                    StructuralFraming<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#StructuralFraming"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#StructuralFraming</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a
+                                href="https://w3id.org/digitalconstruction/0.5/Processes#Activity">https://w3id.org/digitalconstruction/0.5/Processes#Activity</a><sup
+                                class="sup-c" title="class">c</sup><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Members</th>
+                        <td>
+                            <a href="https://w3id.org/obpi#ConcretingFoundation">ConcretingFoundation</a><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="ThirdParty_InspectionAgency">
+                <h3>
+                    ThirdParty_InspectionAgency<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a
+                            href="#ThirdParty_InspectionAgency" title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#ThirdParty_InspectionAgency</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a href="https://schema.org/Organization">sdo:Organization</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="ActualCharacteristicValue">
+                <h3>
+                    ActualCharacteristicValue<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a
+                            href="#ActualCharacteristicValue" title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/ocqa#ActualCharacteristicValue</code></td>
+                    </tr>
+                    <tr>
+                        <th>Members</th>
+                        <td>
+                            <a
+                                href="https://w3id.org/obpi#ActualPerimeterInsulation">ActualPerimeterInsulation</a><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="AssignedCharacteristicValue">
+                <h3>
+                    AssignedCharacteristicValue<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a
+                            href="#AssignedCharacteristicValue" title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/ocqa#AssignedCharacteristicValue</code></td>
+                    </tr>
+                    <tr>
+                        <th>Members</th>
+                        <td>
+                            <a
+                                href="https://w3id.org/obpi#AssignedPerimeterInsulation">AssignedPerimeterInsulation</a><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="Characteristic">
+                <h3>
+                    Characteristic<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Characteristic"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/ocqa#Characteristic</code></td>
+                    </tr>
+                    <tr>
+                        <th>Members</th>
+                        <td>
+                            <a
+                                href="https://w3id.org/obpi#PerimeterInsulation759-488">PerimeterInsulation759-488</a><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="Inspection">
+                <h3>
+                    Inspection<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Inspection"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/ocqa#Inspection</code></td>
+                    </tr>
+                    <tr>
+                        <th>Sub-classes</th>
+                        <td>
+                            <a href="#BuildingPermitInspection">BuildingPermitInspection</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>In range of</th>
+                        <td>
+                            <a href="#requestsInspection">requestsInspection</a><sup class="sup-op"
+                                title="object property">op</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="InspectionPlan">
+                <h3>
+                    InspectionPlan<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#InspectionPlan"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/ocqa#InspectionPlan</code></td>
+                    </tr>
+                    <tr>
+                        <th>Sub-classes</th>
+                        <td>
+                            <a href="#DailyInspectionPlan">DailyInspectionPlan</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                            <a href="#SiteInspectionPlan">SiteInspectionPlan</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                            <a href="#BuildingInspectionPlan">BuildingInspectionPlan</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="Inspector">
+                <h3>
+                    Inspector<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Inspector"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/ocqa#Inspector</code></td>
+                    </tr>
+                    <tr>
+                        <th>Members</th>
+                        <td>
+                            <a href="https://w3id.org/obpi#LilaSchrute">LilaSchrute</a><br />
+                            <a href="https://w3id.org/obpi#FrankScott">FrankScott</a><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="Qualification">
+                <h3>
+                    Qualification<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Qualification"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/ocqa#Qualification</code></td>
+                    </tr>
+                    <tr>
+                        <th>Sub-classes</th>
+                        <td>
+                            <a href="#PermitRelatedInspectionQualification">PermitRelatedInspectionQualification</a><sup
+                                class="sup-c" title="class">c</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="Feature">
+                <h3>
+                    Feature<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Feature"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/ocqa/catalog#Feature</code></td>
+                    </tr>
+                    <tr>
+                        <th>Sub-classes</th>
+                        <td>
+                            <a href="#ChargesFeature">ChargesFeature</a><sup class="sup-c" title="class">c</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="SubFeatureCatalog">
+                <h3>
+                    SubFeatureCatalog<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#SubFeatureCatalog"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/ocqa/catalog#SubFeatureCatalog</code></td>
+                    </tr>
+                    <tr>
+                        <th>Sub-classes</th>
+                        <td>
+                            <a href="#ChargesCatalog">ChargesCatalog</a><sup class="sup-c" title="class">c</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+        <section id="objectproperties">
+            <h2>Object Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+            <ul class="hlist">
+                <li><a href="#hasEffect">hasEffect</a></li>
+                <li><a href="#isEffectOf">isEffectOf</a></li>
+                <li><a href="#accompanying">accompanying</a></li>
+                <li><a href="#containsCharges">containsCharges</a></li>
+                <li><a href="#hasChargesFeature">hasChargesFeature</a></li>
+                <li><a href="#hasPerimeterInstallation">hasPerimeterInstallation</a></li>
+                <li><a href="#hasPreCondition">hasPreCondition</a></li>
+                <li><a href="#hasReInspection">hasReInspection</a></li>
+                <li><a href="#hasRelatedBuilding">hasRelatedBuilding</a></li>
+                <li><a href="#hasSubInspection">hasSubInspection</a></li>
+                <li><a href="#isResposiblefor">isResposiblefor</a></li>
+                <li><a href="#issues">issues</a></li>
+                <li><a href="#precedes">precedes</a></li>
+                <li><a href="#precedesCompletionCertificate">precedesCompletionCertificate</a></li>
+                <li><a href="#precedesComplianceCertificate">precedesComplianceCertificate</a></li>
+                <li><a href="#precedesFinalInspection">precedesFinalInspection</a></li>
+                <li><a href="#precedesIntermediateInspection">precedesIntermediateInspection</a></li>
+                <li><a href="#requests">requests</a></li>
+                <li><a href="#requestsInspection">requestsInspection</a></li>
+                <li><a href="#requestsInspectionForActivity">requestsInspectionForActivity</a></li>
+                <li><a href="#requires">requires</a></li>
+                <li><a href="#submit">submit</a></li>
+                <li><a href="#triggers">triggers</a></li>
+            </ul>
+            <div class="entity property" id="hasEffect">
+                <h3>hasEffect<sup title="object property" class="sup-op">op</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#hasEffect" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties"
+                            title="Object Properties Index">OPs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/digitalconstruction/0.5/Processes#hasEffect</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-properties</th>
+                        <td>
+                            <a href="http://www.w3.org/2002/07/owl#topObjectProperty">owl:topObjectProperty</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="isEffectOf">
+                <h3>isEffectOf<sup title="object property" class="sup-op">op</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#isEffectOf" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties"
+                            title="Object Properties Index">OPs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/digitalconstruction/0.5/Processes#isEffectOf</code></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="accompanying">
+                <h3>accompanying<sup title="object property" class="sup-op">op</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#accompanying" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties"
+                            title="Object Properties Index">OPs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#accompanying</code></td>
+                    </tr>
+                    <tr>
+                        <th>Domain(s)</th>
+                        <td>
+                            <a href="#InspectionPlanning">InspectionPlanning</a><sup class="sup-c" title="class">c</sup>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Range(s)</th>
+                        <td>
+                            <a
+                                href="https://w3id.org/obpi#ExecutingIntermediateInspection">ExecutingIntermediateInspection</a><sup
+                                class="sup-c" title="class">c</sup>
+                            <a href="https://w3id.org/obpi#ExecutingFinalInspection">ExecutingFinalInspection</a><sup
+                                class="sup-c" title="class">c</sup>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="containsCharges">
+                <h3>containsCharges<sup title="object property" class="sup-op">op</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#containsCharges" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties"
+                            title="Object Properties Index">OPs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#containsCharges</code></td>
+                    </tr>
+                    <tr>
+                        <th>Domain(s)</th>
+                        <td>
+                            <a href="#ChargesCatalog">ChargesCatalog</a><sup class="sup-c" title="class">c</sup>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Range(s)</th>
+                        <td>
+                            <a href="https://w3id.org/obpi#ChargesFeature">ChargesFeature</a><sup class="sup-c"
+                                title="class">c</sup>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="hasChargesFeature">
+                <h3>hasChargesFeature<sup title="object property" class="sup-op">op</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#hasChargesFeature" title="fragment link to here">#</a>&nbsp;<a
+                            href="#objectproperties" title="Object Properties Index">OPs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#hasChargesFeature</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-properties</th>
+                        <td>
+                            <a href="http://www.w3.org/2002/07/owl#topObjectProperty">owl:topObjectProperty</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Domain(s)</th>
+                        <td>
+                            <a href="#BuildingPermitInspection">BuildingPermitInspection</a><sup class="sup-c"
+                                title="class">c</sup>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Range(s)</th>
+                        <td>
+                            <a href="https://w3id.org/obpi#ChargesFeature">ChargesFeature</a><sup class="sup-c"
+                                title="class">c</sup>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="hasPerimeterInstallation">
+                <h3>hasPerimeterInstallation<sup title="object property" class="sup-op">op</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#hasPerimeterInstallation" title="fragment link to here">#</a>&nbsp;<a
+                            href="#objectproperties" title="Object Properties Index">OPs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#hasPerimeterInstallation</code></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="hasPreCondition">
+                <h3>hasPreCondition<sup title="object property" class="sup-op">op</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#hasPreCondition" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties"
+                            title="Object Properties Index">OPs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#hasPreCondition</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-properties</th>
+                        <td>
+                            <a href="http://www.w3.org/2002/07/owl#topObjectProperty">owl:topObjectProperty</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Domain(s)</th>
+                        <td>
+                            <a
+                                href="https://w3id.org/digitalconstruction/0.5/Processes#Activity">https://w3id.org/digitalconstruction/0.5/Processes#Activity</a><sup
+                                class="sup-c" title="class">c</sup>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Range(s)</th>
+                        <td>
+                            <a href="https://w3id.org/obpi#ActivityConstraint">ActivityConstraint</a><sup class="sup-c"
+                                title="class">c</sup>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="hasReInspection">
+                <h3>hasReInspection<sup title="object property" class="sup-op">op</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#hasReInspection" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties"
+                            title="Object Properties Index">OPs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#hasReInspection</code></td>
+                    </tr>
+                    <tr>
+                        <th>Domain(s)</th>
+                        <td>
+                            <a href="#BuildingPermitInspection">BuildingPermitInspection</a><sup class="sup-c"
+                                title="class">c</sup>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Range(s)</th>
+                        <td>
+                            <a href="https://w3id.org/obpi#ReInspection">ReInspection</a><sup class="sup-c"
+                                title="class">c</sup>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="hasRelatedBuilding">
+                <h3>hasRelatedBuilding<sup title="object property" class="sup-op">op</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#hasRelatedBuilding" title="fragment link to here">#</a>&nbsp;<a
+                            href="#objectproperties" title="Object Properties Index">OPs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#hasRelatedBuilding</code></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="hasSubInspection">
+                <h3>hasSubInspection<sup title="object property" class="sup-op">op</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#hasSubInspection" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties"
+                            title="Object Properties Index">OPs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#hasSubInspection</code></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="isResposiblefor">
+                <h3>isResposiblefor<sup title="object property" class="sup-op">op</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#isResposiblefor" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties"
+                            title="Object Properties Index">OPs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#isResposiblefor</code></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="issues">
+                <h3>issues<sup title="object property" class="sup-op">op</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#issues" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties"
+                            title="Object Properties Index">OPs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#issues</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-properties</th>
+                        <td>
+                            <a href="http://www.w3.org/2002/07/owl#topObjectProperty">owl:topObjectProperty</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Domain(s)</th>
+                        <td>
+                            <a href="#IssuingComplianceCertificate">IssuingComplianceCertificate</a><sup class="sup-c"
+                                title="class">c</sup>
+                            <a href="#IssuingNotificationLetter">IssuingNotificationLetter</a><sup class="sup-c"
+                                title="class">c</sup>
+                            <a href="#IssuingCompletionCertificate">IssuingCompletionCertificate</a><sup class="sup-c"
+                                title="class">c</sup>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Range(s)</th>
+                        <td>
+                            <a href="https://w3id.org/obpi#AuthorityCertificates">AuthorityCertificates</a><sup
+                                class="sup-c" title="class">c</sup>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="precedes">
+                <h3>precedes<sup title="object property" class="sup-op">op</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#precedes" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties"
+                            title="Object Properties Index">OPs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#precedes</code></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="precedesCompletionCertificate">
+                <h3>precedesCompletionCertificate<sup title="object property" class="sup-op">op</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#precedesCompletionCertificate" title="fragment link to here">#</a>&nbsp;<a
+                            href="#objectproperties" title="Object Properties Index">OPs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#precedesCompletionCertificate</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-properties</th>
+                        <td>
+                            <a href="#precedes">precedes</a><sup class="sup-op" title="object property">op</sup>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="precedesComplianceCertificate">
+                <h3>precedesComplianceCertificate<sup title="object property" class="sup-op">op</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#precedesComplianceCertificate" title="fragment link to here">#</a>&nbsp;<a
+                            href="#objectproperties" title="Object Properties Index">OPs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#precedesComplianceCertificate</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-properties</th>
+                        <td>
+                            <a href="#precedes">precedes</a><sup class="sup-op" title="object property">op</sup>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="precedesFinalInspection">
+                <h3>precedesFinalInspection<sup title="object property" class="sup-op">op</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#precedesFinalInspection" title="fragment link to here">#</a>&nbsp;<a
+                            href="#objectproperties" title="Object Properties Index">OPs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#precedesFinalInspection</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-properties</th>
+                        <td>
+                            <a href="#precedes">precedes</a><sup class="sup-op" title="object property">op</sup>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="precedesIntermediateInspection">
+                <h3>precedesIntermediateInspection<sup title="object property" class="sup-op">op</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#precedesIntermediateInspection" title="fragment link to here">#</a>&nbsp;<a
+                            href="#objectproperties" title="Object Properties Index">OPs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#precedesIntermediateInspection</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-properties</th>
+                        <td>
+                            <a href="#precedes">precedes</a><sup class="sup-op" title="object property">op</sup>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="requests">
+                <h3>requests<sup title="object property" class="sup-op">op</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#requests" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties"
+                            title="Object Properties Index">OPs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#requests</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-properties</th>
+                        <td>
+                            <a href="http://www.w3.org/2002/07/owl#topObjectProperty">owl:topObjectProperty</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Domain(s)</th>
+                        <td>
+                            <a href="#Applicant">Applicant</a><sup class="sup-c" title="class">c</sup>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Range(s)</th>
+                        <td>
+                            <a href="https://w3id.org/obpi#Request">Request</a><sup class="sup-c" title="class">c</sup>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="requestsInspection">
+                <h3>requestsInspection<sup title="object property" class="sup-op">op</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#requestsInspection" title="fragment link to here">#</a>&nbsp;<a
+                            href="#objectproperties" title="Object Properties Index">OPs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#requestsInspection</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-properties</th>
+                        <td>
+                            <a href="http://www.w3.org/2002/07/owl#topObjectProperty">owl:topObjectProperty</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Domain(s)</th>
+                        <td>
+                            <a href="#Request">Request</a><sup class="sup-c" title="class">c</sup>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Range(s)</th>
+                        <td>
+                            <a href="https://w3id.org/ocqa#Inspection">https://w3id.org/ocqa#Inspection</a><sup
+                                class="sup-c" title="class">c</sup>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="requestsInspectionForActivity">
+                <h3>requestsInspectionForActivity<sup title="object property" class="sup-op">op</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#requestsInspectionForActivity" title="fragment link to here">#</a>&nbsp;<a
+                            href="#objectproperties" title="Object Properties Index">OPs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#requestsInspectionForActivity</code></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="requires">
+                <h3>requires<sup title="object property" class="sup-op">op</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#requires" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties"
+                            title="Object Properties Index">OPs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#requires</code></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="submit">
+                <h3>submit<sup title="object property" class="sup-op">op</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#submit" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties"
+                            title="Object Properties Index">OPs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#submit</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-properties</th>
+                        <td>
+                            <a href="http://www.w3.org/2002/07/owl#topObjectProperty">owl:topObjectProperty</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Domain(s)</th>
+                        <td>
+                            <a href="#Applicant">Applicant</a><sup class="sup-c" title="class">c</sup>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Range(s)</th>
+                        <td>
+                            <a
+                                href="https://w3id.org/obpa#BuildingApplication">https://w3id.org/obpa#BuildingApplication</a><sup
+                                class="sup-c" title="class">c</sup>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="triggers">
+                <h3>triggers<sup title="object property" class="sup-op">op</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#triggers" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties"
+                            title="Object Properties Index">OPs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#triggers</code></td>
+                    </tr>
+                    <tr>
+                        <th>Domain(s)</th>
+                        <td>
+                            <a href="#ExecutingIntermediateInspection">ExecutingIntermediateInspection</a><sup
+                                class="sup-c" title="class">c</sup>
+                            <a href="#ExecutingFinalInspection">ExecutingFinalInspection</a><sup class="sup-c"
+                                title="class">c</sup>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Range(s)</th>
+                        <td>
+                            <a
+                                href="https://w3id.org/obpi#IntermediateBuildingPermitInspection">IntermediateBuildingPermitInspection</a><sup
+                                class="sup-c" title="class">c</sup>
+                            <a
+                                href="https://w3id.org/obpi#FinalBuildingPermitInspection">FinalBuildingPermitInspection</a><sup
+                                class="sup-c" title="class">c</sup>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <section id="datatypeproperties">
+            <h2>Datatype Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+            <ul class="hlist">
+                <li><a href="#hasEnd">hasEnd</a></li>
+                <li><a href="#hasPlannedDate">hasPlannedDate</a></li>
+                <li><a href="#hasRequestDate">hasRequestDate</a></li>
+                <li><a href="#hasStart">hasStart</a></li>
+                <li><a href="#hasStatus">hasStatus</a></li>
+                <li><a href="#requestInspectionDate">requestInspectionDate</a></li>
+                <li><a href="#requiresEffectActivityStatus">requiresEffectActivityStatus</a></li>
+            </ul>
+            <div class="entity property" id="hasEnd">
+                <h3>hasEnd<sup title="datatype property" class="sup-dp">dp</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#hasEnd" title="fragment link to here">#</a>&nbsp;<a href="#datatypeproperties"
+                            title="Datatype Properties Index">DPs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#hasEnd</code></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="hasPlannedDate">
+                <h3>hasPlannedDate<sup title="datatype property" class="sup-dp">dp</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#hasPlannedDate" title="fragment link to here">#</a>&nbsp;<a href="#datatypeproperties"
+                            title="Datatype Properties Index">DPs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#hasPlannedDate</code></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="hasRequestDate">
+                <h3>hasRequestDate<sup title="datatype property" class="sup-dp">dp</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#hasRequestDate" title="fragment link to here">#</a>&nbsp;<a href="#datatypeproperties"
+                            title="Datatype Properties Index">DPs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#hasRequestDate</code></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="hasStart">
+                <h3>hasStart<sup title="datatype property" class="sup-dp">dp</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#hasStart" title="fragment link to here">#</a>&nbsp;<a href="#datatypeproperties"
+                            title="Datatype Properties Index">DPs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#hasStart</code></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="hasStatus">
+                <h3>hasStatus<sup title="datatype property" class="sup-dp">dp</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#hasStatus" title="fragment link to here">#</a>&nbsp;<a href="#datatypeproperties"
+                            title="Datatype Properties Index">DPs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#hasStatus</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-properties</th>
+                        <td>
+                            <a href="http://www.w3.org/2002/07/owl#topDataProperty">owl:topDataProperty</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="requestInspectionDate">
+                <h3>requestInspectionDate<sup title="datatype property" class="sup-dp">dp</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#requestInspectionDate" title="fragment link to here">#</a>&nbsp;<a
+                            href="#datatypeproperties" title="Datatype Properties Index">DPs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#requestInspectionDate</code></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="requiresEffectActivityStatus">
+                <h3>requiresEffectActivityStatus<sup title="datatype property" class="sup-dp">dp</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#requiresEffectActivityStatus" title="fragment link to here">#</a>&nbsp;<a
+                            href="#datatypeproperties" title="Datatype Properties Index">DPs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpi#requiresEffectActivityStatus</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-properties</th>
+                        <td>
+                            <a href="http://www.w3.org/2002/07/owl#topDataProperty">owl:topDataProperty</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <section id="annotationproperties">
+            <h2>Annotation Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+            <ul class="hlist">
+                <li><a href="#created">created</a></li>
+                <li><a href="#creator">creator</a></li>
+                <li><a href="#description">description</a></li>
+                <li><a href="#license">license</a></li>
+                <li><a href="#title">title</a></li>
+                <li><a href="#preferredNamespacePrefix">preferredNamespacePrefix</a></li>
+                <li><a href="#preferredNamespaceUri">preferredNamespaceUri</a></li>
+                <li><a href="#value">value</a></li>
+                <li><a href="#hasRole">hasRole</a></li>
+                <li><a href="#CoversSector">CoversSector</a></li>
+                <li><a href="#hasBuilding">hasBuilding</a></li>
+                <li><a href="#hasExpertise">hasExpertise</a></li>
+                <li><a href="#hasInspCharacteristic">hasInspCharacteristic</a></li>
+                <li><a href="#hasInspection">hasInspection</a></li>
+            </ul>
+            <div class="entity property" id="created">
+                <h3>created<sup title="annotation property" class="sup-ap">ap</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#created" title="fragment link to here">#</a>&nbsp;<a href="#annotationproperties"
+                            title="Annotation Properties Index">APs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>http://purl.org/dc/terms/created</code></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="creator">
+                <h3>creator<sup title="annotation property" class="sup-ap">ap</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#creator" title="fragment link to here">#</a>&nbsp;<a href="#annotationproperties"
+                            title="Annotation Properties Index">APs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>http://purl.org/dc/terms/creator</code></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="description">
+                <h3>description<sup title="annotation property" class="sup-ap">ap</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#description" title="fragment link to here">#</a>&nbsp;<a href="#annotationproperties"
+                            title="Annotation Properties Index">APs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>http://purl.org/dc/terms/description</code></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="license">
+                <h3>license<sup title="annotation property" class="sup-ap">ap</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#license" title="fragment link to here">#</a>&nbsp;<a href="#annotationproperties"
+                            title="Annotation Properties Index">APs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>http://purl.org/dc/terms/license</code></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="title">
+                <h3>title<sup title="annotation property" class="sup-ap">ap</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#title" title="fragment link to here">#</a>&nbsp;<a href="#annotationproperties"
+                            title="Annotation Properties Index">APs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>http://purl.org/dc/terms/title</code></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="preferredNamespacePrefix">
+                <h3>preferredNamespacePrefix<sup title="annotation property" class="sup-ap">ap</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#preferredNamespacePrefix" title="fragment link to here">#</a>&nbsp;<a
+                            href="#annotationproperties" title="Annotation Properties Index">APs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>http://purl.org/vocab/vann/preferredNamespacePrefix</code></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="preferredNamespaceUri">
+                <h3>preferredNamespaceUri<sup title="annotation property" class="sup-ap">ap</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#preferredNamespaceUri" title="fragment link to here">#</a>&nbsp;<a
+                            href="#annotationproperties" title="Annotation Properties Index">APs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>http://purl.org/vocab/vann/preferredNamespaceUri</code></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="value">
+                <h3>value<sup title="annotation property" class="sup-ap">ap</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#value" title="fragment link to here">#</a>&nbsp;<a href="#annotationproperties"
+                            title="Annotation Properties Index">APs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://schema.org/value</code></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="hasRole">
+                <h3>hasRole<sup title="annotation property" class="sup-ap">ap</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#hasRole" title="fragment link to here">#</a>&nbsp;<a href="#annotationproperties"
+                            title="Annotation Properties Index">APs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/digitalconstruction/0.5/Entities#hasRole</code></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="CoversSector">
+                <h3>CoversSector<sup title="annotation property" class="sup-ap">ap</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#CoversSector" title="fragment link to here">#</a>&nbsp;<a href="#annotationproperties"
+                            title="Annotation Properties Index">APs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpa#CoversSector</code></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="hasBuilding">
+                <h3>hasBuilding<sup title="annotation property" class="sup-ap">ap</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#hasBuilding" title="fragment link to here">#</a>&nbsp;<a href="#annotationproperties"
+                            title="Annotation Properties Index">APs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpa#hasBuilding</code></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="hasExpertise">
+                <h3>hasExpertise<sup title="annotation property" class="sup-ap">ap</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#hasExpertise" title="fragment link to here">#</a>&nbsp;<a href="#annotationproperties"
+                            title="Annotation Properties Index">APs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/obpa#hasExpertise</code></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="hasInspCharacteristic">
+                <h3>hasInspCharacteristic<sup title="annotation property" class="sup-ap">ap</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#hasInspCharacteristic" title="fragment link to here">#</a>&nbsp;<a
+                            href="#annotationproperties" title="Annotation Properties Index">APs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/ocqa#hasInspCharacteristic</code></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="hasInspection">
+                <h3>hasInspection<sup title="annotation property" class="sup-ap">ap</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#hasInspection" title="fragment link to here">#</a>&nbsp;<a
+                            href="#annotationproperties" title="Annotation Properties Index">APs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/ocqa#hasInspection</code></td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+
+        <section id="namedindividuals">
+            <h2>Named Individuals <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+            <ul class="hlist">
+                <li><a href="#0iHArp6M56$hfIhU3oftny">0iHArp6M56$hfIhU3oftny</a></li>
+                <li><a href="#ActualPerimeterInsulation">ActualPerimeterInsulation</a></li>
+                <li><a href="#AssignedDampProof">AssignedDampProof</a></li>
+                <li><a href="#AssignedPerimeterInsulation">AssignedPerimeterInsulation</a></li>
+                <li><a href="#BA_7589">BA_7589</a></li>
+                <li><a href="#BuildingInspectionPlan51">BuildingInspectionPlan51</a></li>
+                <li><a href="#BuildingInspectionPlan64">BuildingInspectionPlan64</a></li>
+                <li><a href="#BuildingStructuralExpertise">BuildingStructuralExpertise</a></li>
+                <li><a href="#ChiefBuildingOfficial">ChiefBuildingOfficial</a></li>
+                <li><a href="#ComplexBuildingExpertise">ComplexBuildingExpertise</a></li>
+                <li><a href="#ConcretingFoundation">ConcretingFoundation</a></li>
+                <li><a href="#FrankScott">FrankScott</a></li>
+                <li><a href="#Ins_Req_Framing51">Ins_Req_Framing51</a></li>
+                <li><a href="#Inspection187">Inspection187</a></li>
+                <li><a href="#Inspection188">Inspection188</a></li>
+                <li><a href="#Inspection189">Inspection189</a></li>
+                <li><a href="#Inspection190">Inspection190</a></li>
+                <li><a href="#Inspection587">Inspection587</a></li>
+                <li><a href="#Inspection588">Inspection588</a></li>
+                <li><a href="#Inspector1">Inspector</a></li>
+                <li><a href="#Inspector1_Day180">Inspector1_Day180</a></li>
+                <li><a href="#LilaSchrute">LilaSchrute</a></li>
+                <li><a href="#Miller">Miller</a></li>
+                <li><a href="#PerimeterInsulation759-488">PerimeterInsulation759-488</a></li>
+                <li><a href="#Sector05">Sector05</a></li>
+                <li><a href="#UniversityBuilding05">UniversityBuilding05</a></li>
+            </ul>
+            <div class="entity named_individual" id="0iHArp6M56$hfIhU3oftny">
+                <h3>0iHArp6M56$hfIhU3oftny<sup title="named individual" class="sup-ni">ni</sup></h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td>
+                            <code>
+                      https://w3id.org/obpi#0iHArp6M56$hfIhU3oftny
+                  
+                  </code>
+                        </td>
+                    </tr>
+                    <dt>Class(es)</dt>
+                    <dd>
+                        <a href="https://w3id.org/obpi#Foundation">Foundation</a><br />
+                    </dd>
+                </table>
+            </div>
+            <div class="entity named_individual" id="ActualPerimeterInsulation">
+                <h3>ActualPerimeterInsulation<sup title="named individual" class="sup-ni">ni</sup></h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td>
+                            <code>
+                      https://w3id.org/obpi#ActualPerimeterInsulation
+                  
+                  </code>
+                        </td>
+                    </tr>
+                    <dt>Class(es)</dt>
+                    <dd>
+                        <a
+                            href="https://w3id.org/ocqa#ActualCharacteristicValue">https://w3id.org/ocqa#ActualCharacteristicValue</a><br />
+                    </dd>
+                </table>
+            </div>
+            <div class="entity named_individual" id="AssignedDampProof">
+                <h3>AssignedDampProof<sup title="named individual" class="sup-ni">ni</sup></h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td>
+                            <code>
+                      https://w3id.org/obpi#AssignedDampProof
+                  
+                  </code>
+                        </td>
+                    </tr>
+                    <dt>Class(es)</dt>
+                    <dd>
+                        <a href="https://w3id.org/obpi#Requirement">Requirement</a><br />
+                    </dd>
+                </table>
+            </div>
+            <div class="entity named_individual" id="AssignedPerimeterInsulation">
+                <h3>AssignedPerimeterInsulation<sup title="named individual" class="sup-ni">ni</sup></h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td>
+                            <code>
+                      https://w3id.org/obpi#AssignedPerimeterInsulation
+                  
+                  </code>
+                        </td>
+                    </tr>
+                    <dt>Class(es)</dt>
+                    <dd>
+                        <a
+                            href="https://w3id.org/ocqa#AssignedCharacteristicValue">https://w3id.org/ocqa#AssignedCharacteristicValue</a><br />
+                    </dd>
+                </table>
+            </div>
+            <div class="entity named_individual" id="BA_7589">
+                <h3>BA_7589<sup title="named individual" class="sup-ni">ni</sup></h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td>
+                            <code>
+                      https://w3id.org/obpi#BA_7589
+                  
+                  </code>
+                        </td>
+                    </tr>
+                    <dt>Class(es)</dt>
+                    <dd>
+                        <a
+                            href="https://w3id.org/obpa#BuildingApplication">https://w3id.org/obpa#BuildingApplication</a><br />
+                    </dd>
+                </table>
+            </div>
+            <div class="entity named_individual" id="BuildingInspectionPlan51">
+                <h3>BuildingInspectionPlan51<sup title="named individual" class="sup-ni">ni</sup></h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td>
+                            <code>
+                      https://w3id.org/obpi#BuildingInspectionPlan51
+                  
+                  </code>
+                        </td>
+                    </tr>
+                    <dt>Class(es)</dt>
+                    <dd>
+                        <a href="https://w3id.org/obpi#BuildingInspectionPlan">BuildingInspectionPlan</a><br />
+                    </dd>
+                </table>
+            </div>
+            <div class="entity named_individual" id="BuildingInspectionPlan64">
+                <h3>BuildingInspectionPlan64<sup title="named individual" class="sup-ni">ni</sup></h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td>
+                            <code>
+                      https://w3id.org/obpi#BuildingInspectionPlan64
+                  
+                  </code>
+                        </td>
+                    </tr>
+                    <dt>Class(es)</dt>
+                    <dd>
+                        <a href="https://w3id.org/obpi#BuildingInspectionPlan">BuildingInspectionPlan</a><br />
+                    </dd>
+                </table>
+            </div>
+            <div class="entity named_individual" id="BuildingStructuralExpertise">
+                <h3>BuildingStructuralExpertise<sup title="named individual" class="sup-ni">ni</sup></h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td>
+                            <code>
+                      https://w3id.org/obpi#BuildingStructuralExpertise
+                  
+                  </code>
+                        </td>
+                    </tr>
+                    <dt>Class(es)</dt>
+                    <dd>
+                        <a href="https://w3id.org/obpa#Expertise">https://w3id.org/obpa#Expertise</a><br />
+                    </dd>
+                </table>
+            </div>
+            <div class="entity named_individual" id="ChiefBuildingOfficial">
+                <h3>ChiefBuildingOfficial<sup title="named individual" class="sup-ni">ni</sup></h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td>
+                            <code>
+                      https://w3id.org/obpi#ChiefBuildingOfficial
+                  
+                  </code>
+                        </td>
+                    </tr>
+                    <dt>Class(es)</dt>
+                    <dd>
+                        <a href="https://w3id.org/obpa#Role">https://w3id.org/obpa#Role</a><br />
+                    </dd>
+                </table>
+            </div>
+            <div class="entity named_individual" id="ComplexBuildingExpertise">
+                <h3>ComplexBuildingExpertise<sup title="named individual" class="sup-ni">ni</sup></h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td>
+                            <code>
+                      https://w3id.org/obpi#ComplexBuildingExpertise
+                  
+                  </code>
+                        </td>
+                    </tr>
+                    <dt>Class(es)</dt>
+                    <dd>
+                        <a href="https://w3id.org/obpa#Expertise">https://w3id.org/obpa#Expertise</a><br />
+                    </dd>
+                </table>
+            </div>
+            <div class="entity named_individual" id="ConcretingFoundation">
+                <h3>ConcretingFoundation<sup title="named individual" class="sup-ni">ni</sup></h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td>
+                            <code>
+                      https://w3id.org/obpi#ConcretingFoundation
+                  
+                  </code>
+                        </td>
+                    </tr>
+                    <dt>Class(es)</dt>
+                    <dd>
+                        <a href="https://w3id.org/obpi#StructuralFraming">StructuralFraming</a><br />
+                    </dd>
+                </table>
+            </div>
+            <div class="entity named_individual" id="FrankScott">
+                <h3>FrankScott<sup title="named individual" class="sup-ni">ni</sup></h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td>
+                            <code>
+                      https://w3id.org/obpi#FrankScott
+                  
+                  </code>
+                        </td>
+                    </tr>
+                    <dt>Class(es)</dt>
+                    <dd>
+                        <a href="https://w3id.org/ocqa#Inspector">https://w3id.org/ocqa#Inspector</a><br />
+                    </dd>
+                </table>
+            </div>
+            <div class="entity named_individual" id="Ins_Req_Framing51">
+                <h3>Ins_Req_Framing51<sup title="named individual" class="sup-ni">ni</sup></h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td>
+                            <code>
+                      https://w3id.org/obpi#Ins_Req_Framing51
+                  
+                  </code>
+                        </td>
+                    </tr>
+                    <dt>Class(es)</dt>
+                    <dd>
+                        <a href="https://w3id.org/obpi#Request">Request</a><br />
+                    </dd>
+                </table>
+            </div>
+            <div class="entity named_individual" id="Inspection187">
+                <h3>Inspection187<sup title="named individual" class="sup-ni">ni</sup></h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td>
+                            <code>
+                      https://w3id.org/obpi#Inspection187
+                  
+                  </code>
+                        </td>
+                    </tr>
+                    <dt>Class(es)</dt>
+                    <dd>
+                        <a href="https://w3id.org/obpi#ColumnPlacementInspection">ColumnPlacementInspection</a><br />
+                    </dd>
+                </table>
+            </div>
+            <div class="entity named_individual" id="Inspection188">
+                <h3>Inspection188<sup title="named individual" class="sup-ni">ni</sup></h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td>
+                            <code>
+                      https://w3id.org/obpi#Inspection188
+                  
+                  </code>
+                        </td>
+                    </tr>
+                    <dt>Class(es)</dt>
+                    <dd>
+                        <a
+                            href="https://w3id.org/obpi#PerimeterInsulationInspection">PerimeterInsulationInspection</a><br />
+                    </dd>
+                </table>
+            </div>
+            <div class="entity named_individual" id="Inspection189">
+                <h3>Inspection189<sup title="named individual" class="sup-ni">ni</sup></h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td>
+                            <code>
+                      https://w3id.org/obpi#Inspection189
+                  
+                  </code>
+                        </td>
+                    </tr>
+                    <dt>Class(es)</dt>
+                    <dd>
+                        <a href="https://w3id.org/obpi#FootingElevation">FootingElevation</a><br />
+                        <a href="https://w3id.org/obpi#FrostFreeInspection">FrostFreeInspection</a><br />
+                    </dd>
+                </table>
+            </div>
+            <div class="entity named_individual" id="Inspection190">
+                <h3>Inspection190<sup title="named individual" class="sup-ni">ni</sup></h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td>
+                            <code>
+                      https://w3id.org/obpi#Inspection190
+                  
+                  </code>
+                        </td>
+                    </tr>
+                    <dt>Class(es)</dt>
+                    <dd>
+                        <a
+                            href="https://w3id.org/obpi#FoundationPlacementInspection">FoundationPlacementInspection</a><br />
+                    </dd>
+                </table>
+            </div>
+            <div class="entity named_individual" id="Inspection587">
+                <h3>Inspection587<sup title="named individual" class="sup-ni">ni</sup></h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td>
+                            <code>
+                      https://w3id.org/obpi#Inspection587
+                  
+                  </code>
+                        </td>
+                    </tr>
+                    <dt>Class(es)</dt>
+                    <dd>
+                        <a
+                            href="https://w3id.org/obpi#IntermediateBuildingPermitInspection">IntermediateBuildingPermitInspection</a><br />
+                        <a href="https://w3id.org/obpi#MandatoryInspection">MandatoryInspection</a><br />
+                        <a href="https://w3id.org/obpi#FoundationInspection">FoundationInspection</a><br />
+                    </dd>
+                </table>
+            </div>
+            <div class="entity named_individual" id="Inspection588">
+                <h3>Inspection588<sup title="named individual" class="sup-ni">ni</sup></h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td>
+                            <code>
+                      https://w3id.org/obpi#Inspection588
+                  
+                  </code>
+                        </td>
+                    </tr>
+                    <dt>Class(es)</dt>
+                    <dd>
+                        <a
+                            href="https://w3id.org/obpi#IntermediateBuildingPermitInspection">IntermediateBuildingPermitInspection</a><br />
+                        <a href="https://w3id.org/obpi#MandatoryInspection">MandatoryInspection</a><br />
+                        <a href="https://w3id.org/obpi#FramingInspection">FramingInspection</a><br />
+                    </dd>
+                </table>
+            </div>
+            <div class="entity named_individual" id="Inspector1">
+                <h3>Inspector<sup title="named individual" class="sup-ni">ni</sup></h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td>
+                            <code>
+                      https://w3id.org/obpi#Inspector
+                  
+                  </code>
+                        </td>
+                    </tr>
+                    <dt>Class(es)</dt>
+                    <dd>
+                        <a
+                            href="https://w3id.org/digitalconstruction/0.5/Entities#Role">https://w3id.org/digitalconstruction/0.5/Entities#Role</a><br />
+                    </dd>
+                </table>
+            </div>
+            <div class="entity named_individual" id="Inspector1_Day180">
+                <h3>Inspector1_Day180<sup title="named individual" class="sup-ni">ni</sup></h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td>
+                            <code>
+                      https://w3id.org/obpi#Inspector1_Day180
+                  
+                  </code>
+                        </td>
+                    </tr>
+                    <dt>Class(es)</dt>
+                    <dd>
+                        <a href="https://w3id.org/obpi#DailyInspectionPlan">DailyInspectionPlan</a><br />
+                    </dd>
+                </table>
+            </div>
+            <div class="entity named_individual" id="LilaSchrute">
+                <h3>LilaSchrute<sup title="named individual" class="sup-ni">ni</sup></h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td>
+                            <code>
+                      https://w3id.org/obpi#LilaSchrute
+                  
+                  </code>
+                        </td>
+                    </tr>
+                    <dt>Class(es)</dt>
+                    <dd>
+                        <a href="https://w3id.org/ocqa#Inspector">https://w3id.org/ocqa#Inspector</a><br />
+                    </dd>
+                </table>
+            </div>
+            <div class="entity named_individual" id="Miller">
+                <h3>Miller<sup title="named individual" class="sup-ni">ni</sup></h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td>
+                            <code>
+                      https://w3id.org/obpi#Miller
+                  
+                  </code>
+                        </td>
+                    </tr>
+                    <dt>Class(es)</dt>
+                    <dd>
+                        <a href="https://w3id.org/obpi#Applicant">Applicant</a><br />
+                    </dd>
+                </table>
+            </div>
+            <div class="entity named_individual" id="PerimeterInsulation759-488">
+                <h3>PerimeterInsulation759-488<sup title="named individual" class="sup-ni">ni</sup></h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td>
+                            <code>
+                      https://w3id.org/obpi#PerimeterInsulation759-488
+                  
+                  </code>
+                        </td>
+                    </tr>
+                    <dt>Class(es)</dt>
+                    <dd>
+                        <a href="https://w3id.org/ocqa#Characteristic">https://w3id.org/ocqa#Characteristic</a><br />
+                    </dd>
+                </table>
+            </div>
+            <div class="entity named_individual" id="Sector05">
+                <h3>Sector05<sup title="named individual" class="sup-ni">ni</sup></h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td>
+                            <code>
+                      https://w3id.org/obpi#Sector05
+                  
+                  </code>
+                        </td>
+                    </tr>
+                    <dt>Class(es)</dt>
+                    <dd>
+                        <a href="https://w3id.org/obpa#Sector">https://w3id.org/obpa#Sector</a><br />
+                    </dd>
+                </table>
+            </div>
+            <div class="entity named_individual" id="UniversityBuilding05">
+                <h3>UniversityBuilding05<sup title="named individual" class="sup-ni">ni</sup></h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td>
+                            <code>
+                      https://w3id.org/obpi#UniversityBuilding05
+                  
+                  </code>
+                        </td>
+                    </tr>
+                    <dt>Class(es)</dt>
+                    <dd>
+                        <a href="https://w3id.org/obpi#ComplexBuilding">ComplexBuilding</a><br />
+                    </dd>
+                </table>
+            </div>
+        </section>
+
+        <section id="namespaces">
+            <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+            <dl>
+                <dt>default (obpi)</dt>
+                <dd><code>https://w3id.org/obpi</code></dd>
+                <dt>:</dt>
+                <dd><code>https://w3id.org/obpi#</code></dd>
+                <dt>brick</dt>
+                <dd><code>https://brickschema.org/schema/Brick#</code></dd>
+                <dt>csvw</dt>
+                <dd><code>http://www.w3.org/ns/csvw#</code></dd>
+                <dt>dc</dt>
+                <dd><code>http://purl.org/dc/elements/1.1/</code></dd>
+                <dt>dcam</dt>
+                <dd><code>http://purl.org/dc/dcam/</code></dd>
+                <dt>dcat</dt>
+                <dd><code>http://www.w3.org/ns/dcat#</code></dd>
+                <dt>dcmitype</dt>
+                <dd><code>http://purl.org/dc/dcmitype/</code></dd>
+                <dt>dcterms</dt>
+                <dd><code>http://purl.org/dc/terms/</code></dd>
+                <dt>doap</dt>
+                <dd><code>http://usefulinc.com/ns/doap#</code></dd>
+                <dt>foaf</dt>
+                <dd><code>http://xmlns.com/foaf/0.1/</code></dd>
+                <dt>geo</dt>
+                <dd><code>http://www.opengis.net/ont/geosparql#</code></dd>
+                <dt>odrl</dt>
+                <dd><code>http://www.w3.org/ns/odrl/2/</code></dd>
+                <dt>org</dt>
+                <dd><code>http://www.w3.org/ns/org#</code></dd>
+                <dt>owl</dt>
+                <dd><code>http://www.w3.org/2002/07/owl#</code></dd>
+                <dt>prof</dt>
+                <dd><code>http://www.w3.org/ns/dx/prof/</code></dd>
+                <dt>prov</dt>
+                <dd><code>http://www.w3.org/ns/prov#</code></dd>
+                <dt>qb</dt>
+                <dd><code>http://purl.org/linked-data/cube#</code></dd>
+                <dt>rdf</dt>
+                <dd><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></dd>
+                <dt>rdfs</dt>
+                <dd><code>http://www.w3.org/2000/01/rdf-schema#</code></dd>
+                <dt>sdo</dt>
+                <dd><code>https://schema.org/</code></dd>
+                <dt>sh</dt>
+                <dd><code>http://www.w3.org/ns/shacl#</code></dd>
+                <dt>skos</dt>
+                <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
+                <dt>sosa</dt>
+                <dd><code>http://www.w3.org/ns/sosa/</code></dd>
+                <dt>ssn</dt>
+                <dd><code>http://www.w3.org/ns/ssn/</code></dd>
+                <dt>time</dt>
+                <dd><code>http://www.w3.org/2006/time#</code></dd>
+                <dt>vann</dt>
+                <dd><code>http://purl.org/vocab/vann/</code></dd>
+                <dt>void</dt>
+                <dd><code>http://rdfs.org/ns/void#</code></dd>
+                <dt>wgs</dt>
+                <dd><code>https://www.w3.org/2003/01/geo/wgs84_pos#</code></dd>
+                <dt>xsd</dt>
+                <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
+            </dl>
+        </section>
+        <section id="legend">
+            <h2>Legend</h2>
+            <table class="entity">
+                <tr>
+                    <td><sup class="sup-c" title="Classes">c</sup></td>
+                    <td>Classes</td>
+                </tr>
+                <tr>
+                    <td><sup class="sup-op" title="Object Properties">op</sup></td>
+                    <td>Object Properties</td>
+                </tr>
+                <tr>
+                    <td><sup class="sup-fp" title="Functional Properties">fp</sup></td>
+                    <td>Functional Properties</td>
+                </tr>
+                <tr>
+                    <td><sup class="sup-dp" title="Data Properties">dp</sup></td>
+                    <td>Data Properties</td>
+                </tr>
+                <tr>
+                    <td><sup class="sup-ap" title="Annotation Properties">ap</sup></td>
+                    <td>Annotation Properties</td>
+                </tr>
+                <tr>
+                    <td><sup class="sup-p" title="Properties">p</sup></td>
+                    <td>Properties</td>
+                </tr>
+                <tr>
+                    <td><sup class="sup-ni" title="Named Individuals">ni</sup></td>
+                    <td>Named Individuals</td>
+                </tr>
+            </table>
+        </section>
+</body>
+
+</html>
