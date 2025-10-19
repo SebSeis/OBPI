@@ -1,0 +1,230 @@
+@prefix obpiRule: <https://w3id.org/obpiRule#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix obpi: <https://w3id.org/obpi#> .
+@prefix obpa: <https://w3id.org/obpa#> .
+@prefix ocqa: <https://w3id.org/ocqa#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dica: <https://w3id.org/digitalconstruction/0.5/Agents#> .
+@prefix dice: <https://w3id.org/digitalconstruction/0.5/Entities#> .
+@prefix dicp: <https://w3id.org/digitalconstruction/0.5/Processes#> .
+@prefix ex: <https://example.de/foundationInspection#>  .
+@base <https://w3id.org/obpiRule#>.
+
+# SHACL NodeShape for all dice:Foundation instances
+obpiRule:FoundationInspectionShape
+    a sh:NodeShape ;
+    sh:targetClass ex:Foundation ;
+    sh:condition obpiRule:FoundationInspectionConditionShape;
+    #sh:rule obpiRule:CreateInspectionShape ;
+    sh:rule obpiRule:PlanInspectionShape ;
+    sh:rule obpiRule:ClassifyPostFoundationShape ;
+    #sh:rule obpiRule:AssignPredecessorActivity ;
+    #sh:rule obpiRule:FoundationInspectionTripleRule ;
+    #sh:rule obpiRule:TypeInspectionRule;
+.
+
+obpiRule:FoundationInspectionConditionShape
+    a sh:Shape ;
+    sh:deactivated false ;
+    rdfs:comment "Only create an inspection after backfilling+concreting, and no post‑inspection exists" ;
+	sh:and (
+	sh:property [
+	sh:path       [ sh:inversePath dicp:hasObject ] ;
+	sh:class      obpi:PostFoundationInspection ;
+	sh:maxCount   0 ;
+	sh:message    "There should be no PostFoundationInspection for the Foundation." ;
+	]
+    sh:property [
+	sh:path       [ sh:inversePath dicp:hasObject ] ;
+	sh:class      ex:BackfillingActivity ;
+	sh:minCount   1 ;
+	sh:message    "Foundation must be the object of at least one Backfilling activity." ;
+	]
+	sh:property [
+	sh:path       [ sh:inversePath dicp:hasObject ] ;
+	sh:class      ex:ConcretingActivity ;
+	sh:minCount   1 ;
+	sh:message    "Foundation must be the object of at least one Concreting activity." ;
+    ]
+    ) ;    
+.
+
+obpiRule:PlanInspectionShape
+        a sh:TripleRule ;
+        sh:order 0 ;
+        sh:subject [ obpiRule:GenerateUUIDIRI ();    ] ;
+        sh:predicate dicp:hasInspectionObject;
+        sh:object sh:this;
+        sh:description "Assigns both the general and specific types to the inspection instance." 
+        .
+        
+        obpiRule:GenerateUUIDIRI
+  a sh:SPARQLFunction ;
+  rdfs:comment "Generates a new instance for an Inspection with a unique IRI" ;
+  sh:returnType sh:IRI ;
+  sh:select """
+      PREFIX ocqa: <https://w3id.org/ocqa#>
+    SELECT (IRI(CONCAT("https://example.de/foundationInspection#Inspection", STR((COUNT(?s) + 1)))) AS ?result)
+    WHERE {
+      ?s a ocqa:Inspection .
+    }
+
+  """ 
+  .
+    #SELECT (IRI(CONCAT("https://example.de/foundationInspection#Inspection_", REPLACE(STR(UUID()), "^urn:uuid:", ""))) AS ?result)
+    #WHERE {}
+       obpiRule:ClassifyPostFoundationShape
+               a sh:TripleRule ;
+                	sh:order 1 ;
+        # sh:subject [sh:path dicp:hasInspectionObject] ;
+         sh:subject [sh:path [sh:inversePath dicp:hasInspectionObject]] ;
+        sh:predicate rdf:type ;
+         sh:object obpi:PostFoundationInspection ;
+         sh:description "Classifies the post-inspection as a PostFoundationInspection."
+         .
+
+#          obpiRule:AssignPredecessorActivity
+#               a sh:TripleRule ;
+#               sh:order 2 ;
+#               sh:targetClass obpi:PostFoundationInspection ;
+#               sh:condition obpiRule:CheckActivityConcreting ; ;
+#          sh:subject sh:this;
+#          sh:predicate dicp:succeed ;
+#  sh:object [   sh:path ( dicp:hasInspectionObject
+#       [ sh:inversePath dicp:hasObject ] 
+#  );
+#  ] ;
+# .
+#           obpiRule:AssignSuccessorActivity
+#               a sh:TripleRule ;
+#               sh:order 2 ;
+#               sh:targetClass obpi:PostFoundationInspection ;
+#               sh:condition obpiRule:CheckActityBackfilling ; ;
+#          sh:subject sh:this;
+#          sh:predicate dicp:preceeds ;
+#  sh:object [   sh:path ( dicp:hasInspectionObject
+#       [ sh:inversePath dicp:hasObject ] 
+#  );
+#  ] ;
+# .
+          #sh:condition obpiRule:test  ;
+          #[
+        #    a sh:NodeShape ;
+        #      sh:property [
+        #        sh:path  [sh:inversePath dicp:hasObject];
+        #        sh:class ex:ConcretingActivity ;
+        #        sh:minCount 1 ;
+        #      ] ;
+        #    ] ;
+  #       sh:description "Classifies the post-inspection as a PostFoundationInspection."
+   #     .
+
+
+# obpiRule:test
+#            a sh:PropertyShape ;
+#              sh:property [
+#                sh:path ( dicp:hasInspectionObject
+#       [ sh:inversePath dicp:hasObject ] 
+#  );;
+#                #sh:class ex:ConcretingActivity ;
+#                #sh:minCount 1 ;
+#               sh:qualifiedValueShape [
+#             sh:class ex:Foundation ;
+#         ] ;
+#         sh:qualifiedMinCount 1 ;
+#              ] ;
+#.
+#  obpiRule:Filtershape
+#  a sh:NodeShape ;
+#             sh:property [
+#                 sh:path  [sh:inversePath dicp:hasObject;];
+#                 sh:class ex:ConcretingActivity ;
+#                 sh:minCount 1 ;
+#             ]
+# .
+
+# obpiRule:GenerateUUIDIRI
+#   a sh:SPARQLFunction ;
+#   rdfs:comment "Generates a new instance for an Inspection with a unique IRI" ;
+#   sh:returnType sh:IRI ;
+#   sh:select """
+#     SELECT (IRI(CONCAT("https://example.de/foundationInspection#Inspection_", REPLACE(STR(UUID()), "^urn:uuid:", ""))) AS ?result)
+#     WHERE {}
+#   """ 
+#   .
+
+
+
+obpiRule:CreateInspectionShape
+        a sh:SPARQLRule ;
+        sh:order 0 ;
+        rdfs:comment "Creates a new individual of Prüfung" ;
+            #sh:order 1 ;
+    sh:construct """
+    prefix ex: <https://example.de/foundationInspection#> 
+    prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    prefix obpi: <https://w3id.org/obpi#> 
+    prefix obpa: <https://w3id.org/obpa#> 
+    prefix ocqa: <https://w3id.org/ocqa#> 
+    prefix dct: <http://purl.org/dc/terms/> 
+    prefix dica: <https://w3id.org/digitalconstruction/0.5/Agents#> 
+    prefix dice: <https://w3id.org/digitalconstruction/0.5/Entities#> 
+    prefix dicp: <https://w3id.org/digitalconstruction/0.5/Processes#> 
+    CONSTRUCT {
+        ?inspection dicp:hasObject $this ;
+                    rdf:type ocqa:Inspection .
+    }
+    WHERE {
+        BIND(IRI(CONCAT("https://example.de/foundationInspection#Inspection_", STRAFTER(STR(UUID()), "urn:uuid:"))) AS ?inspection)
+    }
+    """ ;
+  .
+#obpiRule:CreateInspectionRelationShape
+#  a sh:TripleRule ;
+#  sh:subject sh:this ;
+#  sh:predicate ex:hasGeneratedInspection ;
+#  sh:object [
+#    sh:js """
+#      return "https://example.org/inspectionJS_" + java.util.UUID.randomUUID().toString();
+#    """
+#  ] .
+#
+##      sh:rule [
+#    a            sh:TripleRule ;
+#    sh:subject [
+#      #sh:rule   
+#       obpiRule:CreateInspectionShapeSELECT () ;
+ #     #sh:argumentList ()  
+#    ] ;
+ #   sh:predicate rdf:type ;
+ #   sh:object    obpi:FoundationPostInspection ;
+#  ] ;
+#    .
+#
+#
+#
+#
+#
+
+#  obpiRule:CreateInspectionShapeSELECT
+#  a            sh:SPARQLFunction ;
+#  rdfs:comment "Generate a fresh Inspection_<UUID> IRI" ;
+#  sh:select """
+#    SELECT (
+#      IRI(
+#        CONCAT(
+ #         STR(ex:Inspection_),
+#          REPLACE(STR(UUID()), "^urn:uuid:", "")
+#        )
+#      ) AS ?result
+#    ) WHERE { }
+#  """ ;
+#  sh:returnType sh:IRI ;
+#.
+
+

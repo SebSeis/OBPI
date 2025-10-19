@@ -1,0 +1,146 @@
+@prefix obpiRule: <https://w3id.org/obpiRule#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix obpi: <https://w3id.org/obpi#> .
+@prefix obpa: <https://w3id.org/obpa#> .
+@prefix ocqa: <https://w3id.org/ocqa#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dica: <https://w3id.org/digitalconstruction/0.5/Agents#> .
+@prefix dice: <https://w3id.org/digitalconstruction/0.5/Entities#> .
+@prefix dicp: <https://w3id.org/digitalconstruction/0.5/Processes#> .
+@prefix ex: <https://example.de/foundationInspection#>  .
+@base <https://w3id.org/obpiRule#>.
+
+# SHACL NodeShape for finally assigning inspector by data, availability, and expertise
+obpiRule:InspectionPlanningOnRequest
+    a sh:NodeShape ;
+    sh:targetClass obpi:Request ;
+    sh:condition obpiRule:RequestAndInspectionValidation ;
+    sh:rule obpiRule:InferenceInspectionTimeFrameOnRequest ;
+    sh:rule obpiRule:InferenceInspector ;
+.
+
+obpiRule:RequestAndInspectionValidation
+    a sh:Shape ;
+    sh:deactivated false ;
+    rdfs:comment "" ;
+	sh:and (
+	sh:property [
+	sh:path       obpi:requestsInspection;
+	sh:class      ocqa:Inspection ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+	sh:message    "There must be exactly one request for an inspection." ;
+    ] 
+    sh:property [
+    sh:path       obpi:hasRequestDate;
+    sh:datatype   xsd:dateTime ;  
+    sh:minCount   1 ;
+    sh:maxCount 1 ;
+    sh:message    "Request should have exactly one hasRequestDate." ;
+    ]
+    sh:property [
+    sh:path       (obpi:requestsInspection [sh:inversePath dica:isResponsibleFor]);
+    sh:maxCount 0 ;
+    sh:message    "Inspection should not have an Inspector assigned." ;
+    ]
+    sh:property [
+    sh:path       (obpi:requestsInspection dicp:occupiesTimeInterval);
+    sh:maxCount 0 ;
+    sh:message    "Inspection should not have an time interval assigned." ;
+    ]
+    ) ; 
+.
+
+obpiRule:InferenceInspectionTimeFrameOnRequest
+  a sh:SPARQLRule ;
+    sh:order 1;
+  sh:construct """
+        PREFIX dica: <https://w3id.org/digitalconstruction/0.5/Agents#> 
+        PREFIX dice: <https://w3id.org/digitalconstruction/0.5/Entities#> 
+        PREFIX dicp: <https://w3id.org/digitalconstruction/0.5/Processes#> 
+        PREFIX ocqa: <https://w3id.org/ocqa#>
+        PREFIX time: <http://www.w3.org/2006/time#>
+        PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+        PREFIX ex: <http://example.org/>
+        PREFIX obpi: <https://w3id.org/obpi#> 
+        PREFIX obpa: <https://w3id.org/obpa#> 
+        PREFIX dicv: <https://w3id.org/digitalconstruction/0.5/Variables#>
+CONSTRUCT {
+    #$this obpi:requestsInspection ?inspection .
+    
+    ?inspection dicp:occupiesTimeInterval _:interval .
+
+    _:interval a dicp:TimeInterval ;
+               ocqa:hasEarliestStart _:start ;
+               ocqa:hasLatestEnd _:end .
+
+    _:start a dicp:TimeInstant ;
+           dicv:hasValue ?requestDate .
+
+    _:end a dicp:TimeInstant ;
+         dicv:hasValue ?latestEndTimeInstant .
+}
+WHERE {
+    $this obpi:hasRequestDate ?requestDate ;
+            obpi:requestsInspection ?inspection .
+
+    BIND(xsd:dateTime(?requestDate) + "P2D"^^xsd:dayTimeDuration AS ?latestEndTimeInstant)
+}
+
+
+        """ ;
+.
+
+obpiRule:InferenceInspector
+  a sh:SPARQLRule ;
+    sh:order 2;
+  sh:construct """
+        PREFIX dica: <https://w3id.org/digitalconstruction/0.5/Agents#> 
+        prefix ex: <https://example.de/foundationInspection#> 
+        PREFIX dice: <https://w3id.org/digitalconstruction/0.5/Entities#> 
+        PREFIX dicp: <https://w3id.org/digitalconstruction/0.5/Processes#> 
+        PREFIX ocqa: <https://w3id.org/ocqa#>
+        PREFIX time: <http://www.w3.org/2006/time#>
+        PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+        PREFIX obpi: <https://w3id.org/obpi#> 
+        PREFIX obpa: <https://w3id.org/obpa#> 
+        PREFIX dicv: <https://w3id.org/digitalconstruction/0.5/Variables#>
+
+CONSTRUCT {
+        ?inspector dica:isResponsibleFor ?inspection.
+        }
+  WHERE {
+          {
+            SELECT ?inspector ?inspection (COALESCE(SUM(?existingDuration),0) AS ?totalAssignedDuration) ?inspectionDuration
+            WHERE {
+
+              $this obpi:requestsInspection ?inspection .
+
+              ?plan ocqa:hasInspection ?inspection ;
+                    dice:hasBuilding ?building .
+              
+              ?building obpi:requiresQualification ?requiredQualification .
+              ?inspector a ocqa:Inspector ;
+                         ocqa:hasQualification ?requiredQualification .
+
+              OPTIONAL {
+                  ?dailyPlan a obpi:DailyInspectionPlan ;
+                             ocqa:hasInspection ?existingInspection .
+                  ?inspector dica:isResponsiblefor ?existingInspection .
+                  ?existingInspection dice:hasDuration/dicv:hasValue ?existingDuration .
+              }
+
+              ?inspection dice:hasDuration/dicv:hasValue ?inspectionDuration .
+            }
+            GROUP BY ?inspector ?inspection ?inspectionDuration
+          }
+
+          FILTER((?totalAssignedDuration + ?inspectionDuration) <= 5)
+      }
+    """ ;
+.

@@ -1,0 +1,201 @@
+@prefix : <https://example.de/foundationInspection#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://example.de/foundationInspection#> .
+
+<https://example.de/foundationInspection#> rdf:type owl:Ontology ;
+                                            owl:versionIRI <https://example.de/foundationInspection#> .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://w3id.org/digitalconstruction/0.5/Agents#isResponsiblefor
+<https://w3id.org/digitalconstruction/0.5/Agents#isResponsiblefor> rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/digitalconstruction/0.5/Entities#hasBuilding
+<https://w3id.org/digitalconstruction/0.5/Entities#hasBuilding> rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/digitalconstruction/0.5/Entities#hasDuration
+<https://w3id.org/digitalconstruction/0.5/Entities#hasDuration> rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/obpi#requestsInspection
+<https://w3id.org/obpi#requestsInspection> rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/obpi#requestsInspectionForActivity
+<https://w3id.org/obpi#requestsInspectionForActivity> rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/obpi#requiresQualification
+<https://w3id.org/obpi#requiresQualification> rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/ocqa#hasInspection
+<https://w3id.org/ocqa#hasInspection> rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/ocqa#hasQualification
+<https://w3id.org/ocqa#hasQualification> rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://w3id.org/digitalconstruction/0.5/Variables#hasValue
+<https://w3id.org/digitalconstruction/0.5/Variables#hasValue> rdf:type owl:DatatypeProperty .
+
+
+###  https://w3id.org/obpi#hasRequestDate
+<https://w3id.org/obpi#hasRequestDate> rdf:type owl:DatatypeProperty .
+
+
+###  https://w3id.org/obpi#requestInspectionDate
+<https://w3id.org/obpi#requestInspectionDate> rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://example.de/foundationInspection#Foundation
+:Foundation rdf:type owl:Class ;
+            rdfs:subClassOf <https://w3id.org/digitalconstruction/0.5/Entities#BuildingObject> .
+
+
+###  https://w3id.org/digitalconstruction/0.5/Entities#Building
+<https://w3id.org/digitalconstruction/0.5/Entities#Building> rdf:type owl:Class .
+
+
+###  https://w3id.org/digitalconstruction/0.5/Entities#BuildingObject
+<https://w3id.org/digitalconstruction/0.5/Entities#BuildingObject> rdf:type owl:Class .
+
+
+###  https://w3id.org/digitalconstruction/0.5/Entities#TimeDuration
+<https://w3id.org/digitalconstruction/0.5/Entities#TimeDuration> rdf:type owl:Class .
+
+
+###  https://w3id.org/obpi#BuildingInspectionQualification
+<https://w3id.org/obpi#BuildingInspectionQualification> rdf:type owl:Class .
+
+
+###  https://w3id.org/obpi#DailyInspectionPlan
+<https://w3id.org/obpi#DailyInspectionPlan> rdf:type owl:Class .
+
+
+###  https://w3id.org/obpi#PostFoundationInspection
+<https://w3id.org/obpi#PostFoundationInspection> rdf:type owl:Class .
+
+
+###  https://w3id.org/obpi#Request
+<https://w3id.org/obpi#Request> rdf:type owl:Class .
+
+
+###  https://w3id.org/ocqa#Inspection
+<https://w3id.org/ocqa#Inspection> rdf:type owl:Class .
+
+
+###  https://w3id.org/ocqa#InspectionPlan
+<https://w3id.org/ocqa#InspectionPlan> rdf:type owl:Class .
+
+
+###  https://w3id.org/ocqa#Inspector
+<https://w3id.org/ocqa#Inspector> rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://example.de/foundationInspection#BuildingInspectionPlanUniversityBuilding
+:BuildingInspectionPlanUniversityBuilding rdf:type owl:NamedIndividual ,
+                                                   <https://w3id.org/ocqa#InspectionPlan> ;
+                                          <https://w3id.org/digitalconstruction/0.5/Entities#hasBuilding> :UniversityBuilding05 ;
+                                          <https://w3id.org/ocqa#hasInspection> :Inspection590 .
+
+
+###  https://example.de/foundationInspection#Building_Structural
+:Building_Structural rdf:type owl:NamedIndividual ,
+                              <https://w3id.org/obpi#BuildingInspectionQualification> .
+
+
+###  https://example.de/foundationInspection#ConcretingActivity
+:ConcretingActivity rdf:type owl:NamedIndividual .
+
+
+###  https://example.de/foundationInspection#DailyInpsectionPlan20250606
+:DailyInpsectionPlan20250606 rdf:type owl:NamedIndividual ,
+                                      <https://w3id.org/obpi#DailyInspectionPlan> ;
+                             <https://w3id.org/ocqa#hasInspection> :Inspection588 ,
+                                                                   :Inspection589 .
+
+
+###  https://example.de/foundationInspection#DurationInspection588
+:DurationInspection588 rdf:type owl:NamedIndividual ,
+                                <https://w3id.org/digitalconstruction/0.5/Entities#TimeDuration> ;
+                       <https://w3id.org/digitalconstruction/0.5/Variables#hasValue> "2.0"^^xsd:double .
+
+
+###  https://example.de/foundationInspection#DurationInspection590
+:DurationInspection590 rdf:type owl:NamedIndividual ,
+                                <https://w3id.org/digitalconstruction/0.5/Entities#TimeDuration> ;
+                       <https://w3id.org/digitalconstruction/0.5/Variables#hasValue> "1.0"^^xsd:double .
+
+
+###  https://example.de/foundationInspection#Inspection588
+:Inspection588 rdf:type owl:NamedIndividual ,
+                        <https://w3id.org/ocqa#Inspection> ;
+               <https://w3id.org/digitalconstruction/0.5/Entities#hasDuration> :DurationInspection588 .
+
+
+###  https://example.de/foundationInspection#Inspection589
+:Inspection589 rdf:type owl:NamedIndividual .
+
+
+###  https://example.de/foundationInspection#Inspection590
+:Inspection590 rdf:type owl:NamedIndividual ,
+                        <https://w3id.org/obpi#PostFoundationInspection> ;
+               <https://w3id.org/digitalconstruction/0.5/Entities#hasDuration> :DurationInspection590 .
+
+
+###  https://example.de/foundationInspection#InspectorX
+:InspectorX rdf:type owl:NamedIndividual ,
+                     <https://w3id.org/ocqa#Inspector> ;
+            <https://w3id.org/digitalconstruction/0.5/Agents#isResponsiblefor> :Inspection588 ,
+                                                                               :Inspection589 ;
+            <https://w3id.org/ocqa#hasQualification> :Building_Structural .
+
+
+###  https://example.de/foundationInspection#Request589
+:Request589 rdf:type owl:NamedIndividual ,
+                     <https://w3id.org/obpi#Request> .
+
+
+###  https://example.de/foundationInspection#Request590
+:Request590 rdf:type owl:NamedIndividual ,
+                     <https://w3id.org/obpi#Request> ;
+            <https://w3id.org/obpi#requestsInspection> :Inspection590 ;
+            <https://w3id.org/obpi#requestsInspectionForActivity> :ConcretingActivity ;
+            <https://w3id.org/obpi#hasRequestDate> "2025-07-16T00:00:00"^^xsd:dateTime ;
+            <https://w3id.org/obpi#requestInspectionDate> "2025-07-16T00:00:00"^^xsd:dateTime .
+
+
+###  https://example.de/foundationInspection#UniversityBuilding05
+:UniversityBuilding05 rdf:type owl:NamedIndividual ,
+                               <https://w3id.org/digitalconstruction/0.5/Entities#Building> ;
+                      <https://w3id.org/obpi#requiresQualification> :Building_Structural .
+
+
+###  https://example.de/foundationInspection#2JFOU2$Zj2yfNnyol7skpJ
+<https://example.de/foundationInspection#2JFOU2$Zj2yfNnyol7skpJ> rdf:type owl:NamedIndividual ,
+                                                                          :Foundation .
+
+
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi
