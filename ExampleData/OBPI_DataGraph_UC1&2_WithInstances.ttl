@@ -1,0 +1,584 @@
+@prefix : <http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://w3id.org/obpi#> .
+
+<https://w3id.org/obpi#> rdf:type owl:Ontology ;
+                          owl:imports <https://w3id.org/digitalconstruction/0.5/Processes> ,
+                                      <https://w3id.org/obpa/0.3> ,
+                                      <https://w3id.org/ocqa/0.1> ;
+                          <http://purl.org/dc/terms/created> "2025-06-22" ;
+                          <http://purl.org/dc/terms/creator> "Sebastian Seiß"@en ,
+                                                             "Yuan Zheng" ;
+                          <http://purl.org/dc/terms/description> """OBPI is a formal, modular OWL ontology capturing the domain of inspection planning
+         for building‐permit authorities"""@en ;
+                          <http://purl.org/dc/terms/license> "http://creativecommons.org/licenses/by/4.0/" ;
+                          <http://purl.org/dc/terms/title> "Ontology for Building Permit Inspection Planning (OBPI)"@en ;
+                          <http://purl.org/vocab/vann/preferredNamespacePrefix> "obpi" ;
+                          <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/obpi" ;
+                          owl:versionInfo 1.0 .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/containsCharges
+:containsCharges rdf:type owl:ObjectProperty ;
+                 rdfs:domain :ChargesCatalog ;
+                 rdfs:range :ChargesFeature .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/hasChargesFeature
+:hasChargesFeature rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf owl:topObjectProperty ;
+                   rdfs:domain :BuildingPermitInspection ;
+                   rdfs:range :ChargesFeature .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/hasReInspection
+:hasReInspection rdf:type owl:ObjectProperty ;
+                 rdfs:domain :BuildingPermitInspection ;
+                 rdfs:range :ReInspection .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/issues
+:issues rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf owl:topObjectProperty ;
+        rdfs:domain :IssuingCompletionCertificate ,
+                    :IssuingComplianceCertificate ,
+                    :IssuingNotificationLetter ;
+        rdfs:range :AuthorityCertificates .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/precedes
+:precedes rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/precedesCompletionCertificate
+:precedesCompletionCertificate rdf:type owl:ObjectProperty ;
+                               rdfs:subPropertyOf :precedes .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/precedesComplianceCertificate
+:precedesComplianceCertificate rdf:type owl:ObjectProperty ;
+                               rdfs:subPropertyOf :precedes .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/precedesFinalInspection
+:precedesFinalInspection rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf :precedes .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/precedesIntermediateInspection
+:precedesIntermediateInspection rdf:type owl:ObjectProperty ;
+                                rdfs:subPropertyOf :precedes .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/requests
+:requests rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          rdfs:domain :Applicant ;
+          rdfs:range :Request .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/requestsInspection
+:requestsInspection rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf owl:topObjectProperty ;
+                    rdfs:domain :Request ;
+                    rdfs:range <https://w3id.org/ocqa#Inspection> .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/submit
+:submit rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf owl:topObjectProperty ;
+        rdfs:domain :Applicant ;
+        rdfs:range <https://w3id.org/obpa#BuildingApplication> .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/triggers
+:triggers rdf:type owl:ObjectProperty ;
+          rdfs:domain :ExecutingFinalInspection ,
+                      :ExecutingIntermediateInspection ;
+          rdfs:range :FinalBuildingPermitInspection ,
+                     :IntermediateBuildingPermitInspection .
+
+
+###  https://w3id.org/obpi#hasPerimeterInstallation
+:hasPerimeterInstallation rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/obpi#hasRelatedBuilding
+:hasRelatedBuilding rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/obpi#hasSubInspection
+:hasSubInspection rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/obpi#isResposiblefor
+:isResposiblefor rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/obpi#requestsInspectionForActivity
+:requestsInspectionForActivity rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/obpi#requires
+:requires rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://w3id.org/obpi#hasEnd
+:hasEnd rdf:type owl:DatatypeProperty .
+
+
+###  https://w3id.org/obpi#hasPlannedDate
+:hasPlannedDate rdf:type owl:DatatypeProperty .
+
+
+###  https://w3id.org/obpi#hasRequestDate
+:hasRequestDate rdf:type owl:DatatypeProperty .
+
+
+###  https://w3id.org/obpi#hasStart
+:hasStart rdf:type owl:DatatypeProperty .
+
+
+###  https://w3id.org/obpi#requestInspectionDate
+:requestInspectionDate rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/AdministrativeActivity
+:AdministrativeActivity rdf:type owl:Class ;
+                        rdfs:subClassOf <https://w3id.org/digitalconstruction/0.5/Processes#Activity> .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/Applicant
+:Applicant rdf:type owl:Class ;
+           rdfs:subClassOf <https://w3id.org/digitalconstruction/0.5/Agents#Person> .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/AuthorityCertificates
+:AuthorityCertificates rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/BuildingPermitInspection
+:BuildingPermitInspection rdf:type owl:Class ;
+                          rdfs:subClassOf <https://w3id.org/ocqa#Inspection> .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/ChargesCatalog
+:ChargesCatalog rdf:type owl:Class ;
+                rdfs:subClassOf <https://w3id.org/ocqa/catalog#SubFeatureCatalog> .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/ChargesFeature
+:ChargesFeature rdf:type owl:Class ;
+                rdfs:subClassOf <https://w3id.org/ocqa/catalog#Feature> .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/City
+:City rdf:type owl:Class ;
+      rdfs:subClassOf :Juristication .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/CommunicationNonCompliance
+:CommunicationNonCompliance rdf:type owl:Class ;
+                            rdfs:subClassOf :AdministrativeActivity .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/CompletionCertifcate
+:CompletionCertifcate rdf:type owl:Class ;
+                      rdfs:subClassOf :AuthorityCertificates .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/ComplianceCertificate
+:ComplianceCertificate rdf:type owl:Class ;
+                       rdfs:subClassOf :AuthorityCertificates .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/Constraint
+:Constraint rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/DailyInspectionPlan
+:DailyInspectionPlan rdf:type owl:Class ;
+                     rdfs:subClassOf <https://w3id.org/ocqa#InspectionPlan> .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/ExecutingFinalInspection
+:ExecutingFinalInspection rdf:type owl:Class ;
+                          rdfs:subClassOf :AdministrativeActivity .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/ExecutingIntermediateInspection
+:ExecutingIntermediateInspection rdf:type owl:Class ;
+                                 rdfs:subClassOf :AdministrativeActivity .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/FailedInspection
+:FailedInspection rdf:type owl:Class ;
+                  rdfs:subClassOf :BuildingPermitInspection .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/FinalBuildingPermitInspection
+:FinalBuildingPermitInspection rdf:type owl:Class ;
+                               rdfs:subClassOf :BuildingPermitInspection .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/InspectionPlanning
+:InspectionPlanning rdf:type owl:Class ;
+                    rdfs:subClassOf :AdministrativeActivity .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/Inspection_Department
+:Inspection_Department rdf:type owl:Class ;
+                       rdfs:subClassOf <https://w3id.org/obpa#Department> .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/IntermediateBuildingPermitInspection
+:IntermediateBuildingPermitInspection rdf:type owl:Class ;
+                                      rdfs:subClassOf :BuildingPermitInspection .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/IssuingCompletionCertificate
+:IssuingCompletionCertificate rdf:type owl:Class ;
+                              rdfs:subClassOf :AdministrativeActivity .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/IssuingComplianceCertificate
+:IssuingComplianceCertificate rdf:type owl:Class ;
+                              rdfs:subClassOf :AdministrativeActivity .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/IssuingNotificationLetter
+:IssuingNotificationLetter rdf:type owl:Class ;
+                           rdfs:subClassOf :AdministrativeActivity .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/Juristication
+:Juristication rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/MandatoryInspection
+:MandatoryInspection rdf:type owl:Class ;
+                     rdfs:subClassOf :BuildingPermitInspection ;
+                     owl:disjointWith :OptionaInspection .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/MissedInspection
+:MissedInspection rdf:type owl:Class ;
+                  rdfs:subClassOf :BuildingPermitInspection .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/NotifcationLetter
+:NotifcationLetter rdf:type owl:Class ;
+                   rdfs:subClassOf :AuthorityCertificates .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/OptionaInspection
+:OptionaInspection rdf:type owl:Class ;
+                   rdfs:subClassOf :BuildingPermitInspection .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/Province
+:Province rdf:type owl:Class ;
+          rdfs:subClassOf :Juristication .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/ReInspection
+:ReInspection rdf:type owl:Class ;
+              rdfs:subClassOf :BuildingPermitInspection .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/Request
+:Request rdf:type owl:Class ;
+         rdfs:subClassOf <https://w3id.org/digitalconstruction/0.5/Processes#Activity> .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/SiteInspectionPlan
+:SiteInspectionPlan rdf:type owl:Class ;
+                    rdfs:subClassOf <https://w3id.org/ocqa#InspectionPlan> .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/State
+:State rdf:type owl:Class ;
+       rdfs:subClassOf :Juristication .
+
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/ThirdParty_InspectionAgency
+:ThirdParty_InspectionAgency rdf:type owl:Class ;
+                             rdfs:subClassOf <https://schema.org/Organization> .
+
+
+###  https://w3id.org/obpi#BuildingInspectionPlan
+:BuildingInspectionPlan rdf:type owl:Class ;
+                        rdfs:subClassOf <https://w3id.org/ocqa#InspectionPlan> .
+
+
+###  https://w3id.org/obpi#ColumnPlacementInspection
+:ColumnPlacementInspection rdf:type owl:Class ;
+                           rdfs:subClassOf :BuildingPermitInspection .
+
+
+###  https://w3id.org/obpi#ComplexBuilding
+:ComplexBuilding rdf:type owl:Class ;
+                 rdfs:subClassOf <https://w3id.org/obpa#Building> .
+
+
+###  https://w3id.org/obpi#FootingElevation
+:FootingElevation rdf:type owl:Class ;
+                  rdfs:subClassOf :BuildingPermitInspection .
+
+
+###  https://w3id.org/obpi#Foundation
+:Foundation rdf:type owl:Class .
+
+
+###  https://w3id.org/obpi#FoundationInspection
+:FoundationInspection rdf:type owl:Class ;
+                      rdfs:subClassOf :BuildingPermitInspection .
+
+
+###  https://w3id.org/obpi#FoundationPlacementInspection
+:FoundationPlacementInspection rdf:type owl:Class ;
+                               rdfs:subClassOf :BuildingPermitInspection .
+
+
+###  https://w3id.org/obpi#FramingInspection
+:FramingInspection rdf:type owl:Class ;
+                   rdfs:subClassOf :BuildingPermitInspection .
+
+
+###  https://w3id.org/obpi#FrostFreeInspection
+:FrostFreeInspection rdf:type owl:Class ;
+                     rdfs:subClassOf :BuildingPermitInspection .
+
+
+###  https://w3id.org/obpi#PerimeterInsulationInspection
+:PerimeterInsulationInspection rdf:type owl:Class ;
+                               rdfs:subClassOf :BuildingPermitInspection .
+
+
+###  https://w3id.org/obpi#Requirement
+:Requirement rdf:type owl:Class .
+
+
+###  https://w3id.org/obpi#StructuralFraming
+:StructuralFraming rdf:type owl:Class ;
+                   rdfs:subClassOf <https://w3id.org/digitalconstruction/0.5/Processes#Activity> .
+
+
+###  https://w3id.org/ocqa/catalog#Feature
+<https://w3id.org/ocqa/catalog#Feature> rdf:type owl:Class .
+
+
+###  https://w3id.org/ocqa/catalog#SubFeatureCatalog
+<https://w3id.org/ocqa/catalog#SubFeatureCatalog> rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/22/untitled-ontology-11/Ins_Req_Framing51
+:Ins_Req_Framing51 rdf:type owl:NamedIndividual ,
+                            :Request ;
+                   :requestsInspectionForActivity :ConcretingFoundation ;
+                   :hasRequestDate "18.07.2025"^^xsd:string ;
+                   :requestInspectionDate "22.07.2025"^^xsd:string .
+
+
+###  https://w3id.org/obpi#ActualPerimeterInsulation
+:ActualPerimeterInsulation rdf:type owl:NamedIndividual ,
+                                    <https://w3id.org/ocqa#ActualCharacteristicValue> ;
+                           <https://schema.org/value> "true"^^xsd:boolean .
+
+
+###  https://w3id.org/obpi#AssignedDampProof
+:AssignedDampProof rdf:type owl:NamedIndividual ,
+                            :Requirement ;
+                   :requires :AssignedPerimeterInsulation .
+
+
+###  https://w3id.org/obpi#AssignedPerimeterInsulation
+:AssignedPerimeterInsulation rdf:type owl:NamedIndividual ,
+                                      <https://w3id.org/ocqa#AssignedCharacteristicValue> ;
+                             <https://schema.org/value> "true"^^xsd:boolean .
+
+
+###  https://w3id.org/obpi#BA_7589
+:BA_7589 rdf:type owl:NamedIndividual ,
+                  <https://w3id.org/obpa#BuildingApplication> ;
+         <https://w3id.org/obpa#hasBuilding> :UniversityBuilding05 .
+
+
+###  https://w3id.org/obpi#BuildingInspectionPlan51
+:BuildingInspectionPlan51 rdf:type owl:NamedIndividual ,
+                                   :BuildingInspectionPlan ;
+                          :hasRelatedBuilding :UniversityBuilding05 ;
+                          <https://w3id.org/ocqa#hasInspection> :Inspection587 .
+
+
+###  https://w3id.org/obpi#BuildingInspectionPlan64
+:BuildingInspectionPlan64 rdf:type owl:NamedIndividual ,
+                                   :BuildingInspectionPlan ;
+                          <https://w3id.org/ocqa#hasInspection> :Inspection588 .
+
+
+###  https://w3id.org/obpi#BuildingStructuralExpertise
+:BuildingStructuralExpertise rdf:type owl:NamedIndividual ,
+                                      <https://w3id.org/obpa#Expertise> .
+
+
+###  https://w3id.org/obpi#ChiefBuildingOfficial
+:ChiefBuildingOfficial rdf:type owl:NamedIndividual ,
+                                <https://w3id.org/obpa#Role> .
+
+
+###  https://w3id.org/obpi#ComplexBuildingExpertise
+:ComplexBuildingExpertise rdf:type owl:NamedIndividual ,
+                                   <https://w3id.org/obpa#Expertise> .
+
+
+###  https://w3id.org/obpi#ConcretingFoundation
+:ConcretingFoundation rdf:type owl:NamedIndividual ,
+                               :StructuralFraming ;
+                      :precedes :Inspection587 ;
+                      :hasEnd "2024-09-15"^^xsd:string ;
+                      :hasStart "2025-09-15"^^xsd:string .
+
+
+###  https://w3id.org/obpi#FrankScott
+:FrankScott rdf:type owl:NamedIndividual ,
+                     <https://w3id.org/ocqa#Inspector> ;
+            <https://w3id.org/digitalconstruction/0.5/Entities#hasRole> :ChiefBuildingOfficial ;
+            <https://w3id.org/obpa#CoversSector> :Sector05 ;
+            <https://w3id.org/obpa#hasExpertise> :ComplexBuildingExpertise ;
+            :isResposiblefor :Inspection587 ,
+                             :Inspection588 .
+
+
+###  https://w3id.org/obpi#Inspection187
+:Inspection187 rdf:type owl:NamedIndividual ,
+                        :ColumnPlacementInspection .
+
+
+###  https://w3id.org/obpi#Inspection188
+:Inspection188 rdf:type owl:NamedIndividual ,
+                        :PerimeterInsulationInspection ;
+               <https://w3id.org/ocqa#hasInspCharacteristic> :PerimeterInsulation759-488 .
+
+
+###  https://w3id.org/obpi#Inspection189
+:Inspection189 rdf:type owl:NamedIndividual ,
+                        :FootingElevation ,
+                        :FrostFreeInspection .
+
+
+###  https://w3id.org/obpi#Inspection190
+:Inspection190 rdf:type owl:NamedIndividual ,
+                        :FoundationPlacementInspection .
+
+
+###  https://w3id.org/obpi#Inspection587
+:Inspection587 rdf:type owl:NamedIndividual ,
+                        :IntermediateBuildingPermitInspection ,
+                        :MandatoryInspection ,
+                        :FoundationInspection ;
+               :hasSubInspection :Inspection188 ,
+                                 :Inspection189 ,
+                                 :Inspection190 .
+
+
+###  https://w3id.org/obpi#Inspection588
+:Inspection588 rdf:type owl:NamedIndividual ,
+                        :IntermediateBuildingPermitInspection ,
+                        :MandatoryInspection ,
+                        :FramingInspection ;
+               :hasSubInspection :Inspection187 .
+
+
+###  https://w3id.org/obpi#Inspector
+:Inspector rdf:type owl:NamedIndividual ,
+                    <https://w3id.org/digitalconstruction/0.5/Entities#Role> .
+
+
+###  https://w3id.org/obpi#Inspector1_Day180
+:Inspector1_Day180 rdf:type owl:NamedIndividual ,
+                            :DailyInspectionPlan ;
+                   <https://w3id.org/ocqa#hasInspection> :Inspection587 ,
+                                                         :Inspection588 ;
+                   :hasPlannedDate "22.07.2025"^^xsd:string .
+
+
+###  https://w3id.org/obpi#LilaSchrute
+:LilaSchrute rdf:type owl:NamedIndividual ,
+                      <https://w3id.org/ocqa#Inspector> ;
+             <https://w3id.org/digitalconstruction/0.5/Entities#hasRole> :Inspector ;
+             <https://w3id.org/obpa#CoversSector> :Sector05 ;
+             <https://w3id.org/obpa#hasExpertise> :ComplexBuildingExpertise .
+
+
+###  https://w3id.org/obpi#Miller
+:Miller rdf:type owl:NamedIndividual ,
+                 :Applicant ;
+        :requests :Ins_Req_Framing51 ;
+        :submit :BA_7589 .
+
+
+###  https://w3id.org/obpi#PerimeterInsulation759-488
+:PerimeterInsulation759-488 rdf:type owl:NamedIndividual ,
+                                     <https://w3id.org/ocqa#Characteristic> .
+
+
+###  https://w3id.org/obpi#Sector05
+:Sector05 rdf:type owl:NamedIndividual ,
+                   <https://w3id.org/obpa#Sector> .
+
+
+###  https://w3id.org/obpi#UniversityBuilding05
+:UniversityBuilding05 rdf:type owl:NamedIndividual ,
+                               :ComplexBuilding .
+
+
+###  https://w3id.org/obpi#0iHArp6M56$hfIhU3oftny
+<https://w3id.org/obpi#0iHArp6M56$hfIhU3oftny> rdf:type owl:NamedIndividual ,
+                                                        :Foundation ;
+                                               :hasPerimeterInstallation :PerimeterInsulation759-488 .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :CommunicationNonCompliance
+                :ExecutingFinalInspection
+                :ExecutingIntermediateInspection
+                :IssuingCompletionCertificate
+                :IssuingComplianceCertificate
+                :IssuingNotificationLetter
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :CompletionCertifcate
+                :ComplianceCertificate
+                :NotifcationLetter
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
